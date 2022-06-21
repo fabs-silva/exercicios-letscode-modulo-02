@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style03.css">
+    <title>Exercício 08 - Módulo 02</title>
+</head>
+
+<body>
+    <main class="to-do-page">
+        <section class="to-do-container">
+            <form action="submit" class="to-do-form">
+                <label for="tarefa" class="to-do-label">Digite sua tarefa:</label>
+                <textarea class="to-do-textarea" name="tarefa" placeholder="Digite sua tarefa" required></textarea>
+                <button class="to-do-button" type="submit">Salvar</button>
+            </form>
+            <div class="to-do-list">
+                <h1 class="to-do-list-header">Lista de Tarefas</h1>
+                <ul class="to-do-list-items"></ul>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="main03.js"></script>
+</body>
+
+</html>

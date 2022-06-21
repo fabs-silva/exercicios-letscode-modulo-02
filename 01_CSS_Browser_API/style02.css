@@ -8,7 +8,9 @@
     --black: #121212;
     --yellow: #f1c40f;
     --white: #ffffff;
-    --yellow-gradient: linear-gradient(to right, #f1ca2b, #eba308 60%);
+    --white-alpha: rgba(255, 255, 255, 0.75);
+    --black-gradient: linear-gradient(to bottom, #201e1e, #3d3c3c);
+    --border-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgb(32, 30, 30) 27%);
     --font: 'Montserrat', sans-serif;
 }
 
@@ -21,33 +23,46 @@ body {
     font-size: 18px;
 }
 
+.social-media-wrapper {
+    background-image: var(--border-gradient);
+    padding: 0 0.5px;
+    margin: 1rem;
+    border-radius: 0.5rem;
+}
+
 .social-media-box {
     display: flex;
-    justify-content: space-between;
-    background-image: var(--yellow-gradient);
-    color: var(--black);
-    padding: 7rem 5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: var(--black-gradient);
+    padding: 3rem 0;
+    border-radius: 0.5rem;
+    gap: 3rem;
 }
 
 .social-media-title {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 1.6rem;
+    font-weight: 400;
     width: 100%;
-    max-width: 20rem;
+    max-width: 25rem;
 }
 
 .social-media-buttons {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 45rem;
-
+    list-style: none;
+    gap: 3rem;
 }
 
 .social-media-icon {
-    font-size: 1.25rem;
-    text-align: center;
-    line-height: 1.8rem;
-    margin-bottom: 3rem;
+    font-size: 3rem;
+    color: var(--white);
+}
+
+.social-media-icon:hover,
+.social-media-icon:focus,
+.social-media-icon:active {
+    color: var(--white-alpha);
 }
