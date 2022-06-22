@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #121212;
+    --red: #ce5454;
+    --white: #ffffff;
+    --yellow: #ffee00;
+    --green: #57834c;
+    --gray: #aaaaaa;
+    --font: 'IBM Plex Mono', monospace;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--black);
+    color: var(--white);
+    font-family: var(--font);
+    font-weight: 300;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabuleiro {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--black);
+}
+
+.tabuleiro-resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.tabuleiro-titulo {
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    border-bottom: 4px solid var(--yellow);
+}
+
+.tabuleiro-placar {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.tabuleiro-jogador {
+    display: flex;
+}
+
+.tabuleiro-jogador-nome {
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.tabuleiro-jogador-pontos {
+    font-weight: 300;
+}
+
+.tabuleiro-versus {
+    color: var(--yellow);
+    font-weight: 700;
+}
+
+.tabuleiro-inicia {
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: var(--font);
+    font-weight: 500;
+    background-color: var(--green);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.tabuleiro-inicia:hover,
+.tabuleiro-inicia:visited,
+.tabuleiro-inicia:active {
+    opacity: 0.8;
+}
+
+.tabuleiro-inicia:disabled {
+    background-color: var(--gray);
+    color: var(--black);
+}
+
+.tabuleiro-inicia:disabled:hover,
+.tabuleiro-inicia:disabled:visited,
+.tabuleiro-inicia:disabled:active {
+    opacity: 1;
+}
+
+.celula-tabuleiro {
+    background-color: var(--white);
+    width: auto;
+    height: 100%;
+}
+
+[data-x-ou-o] {
+    font-size: 10rem;
+    font-weight: 900;
+}
+
+[data-x-ou-o="o"] {
+    color: var(--black)
+}
+
+[data-x-ou-o="x"] {
+    color: var(--red)
+}
+
+[data-x-ou-o="winner"] {
+    color: var(--green);
+}
