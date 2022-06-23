@@ -72,21 +72,34 @@ body {
     font-size: 1.1rem;
 }
 
+.to-do-buttons{
+  display: flex;
+  gap: 2rem;
+justify-content: center;
+}
+
 .to-do-button {
-    align-self: center;
     padding: 0.65rem 3rem;
     font-family: var(--font);
     font-weight: 500;
     font-size: 1rem;
-    background-color: var(--dark-blue);
-    border: none;
     border-radius: 0.5rem;
-    color: var(--white);
-
 }
 
 .to-do-button:hover {
     opacity: 0.9;
+}
+
+.save-button{
+  color: var(--white);
+  background-color: var(--dark-blue);
+  border: none;
+}
+
+.reset-button{
+  color: var(--dark-blue);
+  background-color: transparent;
+  border: 2px solid var(--dark-blue);
 }
 
 .to-do-list {

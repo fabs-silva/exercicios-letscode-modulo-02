@@ -11,12 +11,15 @@ jogador1?.append(placarJogador1.toString());
 jogador2?.append(placarJogador2.toString());
 
 const alteraPlacar = (jogador: HTMLParagraphElement): void => {
-    const placarAtual = parseInt(jogador.innerText);
-    jogador.innerText = `${(placarAtual + 1).toString()}`;
+  const placarAtual = parseInt(jogador.innerText);
+  jogador.innerText = `${(placarAtual + 1).toString()}`;
 }
 
 const comecarJogo = (): void => {
-    botao.disabled = true;
+  botao.disabled = true;
+
 }
 
-comecarJogo();
+botao.addEventListener('click', () => {
+  comecarJogo();
+});
