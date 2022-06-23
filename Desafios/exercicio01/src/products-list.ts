@@ -74,15 +74,18 @@ export const geraListaProdutos = (lista: HTMLElement): void => {
         const nomeProduto = document.createElement('p');
         const valorProduto = document.createElement('p');
         const imagemProduto = document.createElement('img');
+        const botaoCarrinho = document.createElement('button');
 
         nomeProduto.innerText = prod.nome;
         valorProduto.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(prod.preco);
         imagemProduto.src = prod.imagem;
+        botaoCarrinho.innerText = 'Comprar';
 
         const elementoHTML = document.createElement('div');
         elementoHTML.appendChild(nomeProduto);
         elementoHTML.appendChild(valorProduto);
         elementoHTML.appendChild(imagemProduto);
+        elementoHTML.appendChild(botaoCarrinho);
 
         lista.append(elementoHTML);
 
