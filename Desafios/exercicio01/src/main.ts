@@ -1,7 +1,5 @@
-const teste = "Teste";
+import { geraListaProdutos } from "./products-list";
 
-const app = document.querySelector<HTMLDivElement>('#app')!
+const lista = document.querySelector<HTMLDivElement>('#compras')!
 
-app.innerHTML = `
- ${teste}
-`
+geraListaProdutos(lista);

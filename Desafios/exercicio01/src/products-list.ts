@@ -5,7 +5,7 @@ interface Produto {
     estoque: number
 }
 
-export const listaDeProdutos: Produto[] = [
+const listaDeProdutos: Produto[] = [
     {
         nome: 'Camiseta Feminina Yankees LeMahieu',
         preco: 55.00,
@@ -37,29 +37,54 @@ export const listaDeProdutos: Produto[] = [
         estoque: 3
     },
     {
-        nome: 'string',
-        preco: ,
-        imagem: '',
-        estoque: },
+        nome: 'Camiseta Café Não Costuma Faiá',
+        preco: 40.00,
+        imagem: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR6orKryuIe1jY8ngkAMXUFg9REYxQ1t796NIxftDcvlZHDO_ggwaulyOeRCjbDIrbtcrQWe7V43oHWNUaDfR3e2aS4hwLW-h-64ys5gj2L_BrEUynaal-n2w&usqp=CAE',
+        estoque: 1
+    },
     {
-        nome: 'string',
-        preco: ,
-        imagem: '',
-        estoque: },
+        nome: 'Camiseta Khachapuri e Khinkali',
+        preco: 31.00,
+        imagem: 'https://i5.walmartimages.com/asr/d16f3200-8e77-4a01-8755-046f1f7c6601_1.80a4ae85e523a44598ec0820af7db11d.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
+        estoque: 8
+    },
     {
-        nome: 'string',
-        preco: ,
-        imagem: '',
-        estoque: },
+        nome: 'Camista Spread Ajvar Not Hate',
+        preco: 34.00,
+        imagem: 'https://m.media-amazon.com/images/I/B1F7+hokpLS._CLa%7C2140%2C2000%7C51Vh7xVjihL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX679._SX._UX._SY._UY_.png',
+        estoque: 6
+    },
     {
-        nome: 'string',
-        preco: ,
-        imagem: '',
-        estoque: },
+        nome: 'Camiseta Adenia Chloe',
+        preco: 43.00,
+        imagem: 'https://cdn.awsli.com.br/1000x1000/236/236627/produto/133763450/desca-triste-entao-camiseta-basicona-unissex-92583930.jpg',
+        estoque: 4
+    },
     {
-        nome: 'string',
-        preco: ,
-        imagem: '',
-        estoque: },
+        nome: 'Camiseta Css-in-JS',
+        preco: 35.00,
+        imagem: 'https://cdn.shopify.com/s/files/1/2651/2090/products/mockup-39c0178b_1200x1200.jpg?v=1606426778',
+        estoque: 2
+    },
 
-]
+];
+
+export const geraListaProdutos = (lista: HTMLElement): void => {
+    listaDeProdutos.forEach(prod => {
+        const nomeProduto = document.createElement('p');
+        const valorProduto = document.createElement('p');
+        const imagemProduto = document.createElement('img');
+
+        nomeProduto.innerText = prod.nome;
+        valorProduto.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(prod.preco);
+        imagemProduto.src = prod.imagem;
+
+        const elementoHTML = document.createElement('div');
+        elementoHTML.appendChild(nomeProduto);
+        elementoHTML.appendChild(valorProduto);
+        elementoHTML.appendChild(imagemProduto);
+
+        lista.append(elementoHTML);
+
+    });
+}
