@@ -16,28 +16,23 @@ let checarVez = true;
 const JOGADOR_X = 'fa-x';
 const JOGADOR_O = 'fa-circle';
 
+localStorage.getItem('pontosjogadorX') === null && localStorage.setItem('pontosjogadorX', '0');
+localStorage.getItem('pontosjogadorO') === null && localStorage.setItem('pontosjogadorO', '0');
+
 const jogador_x_pontos = document.querySelector('#jogador1>p.tabuleiro-jogador-pontos') as HTMLParagraphElement;
 const jogador_o_pontos = document.querySelector('#jogador2>p.tabuleiro-jogador-pontos') as HTMLParagraphElement;
 
-jogador_x_pontos.innerText = '0';
-jogador_o_pontos.innerText = '0';
+jogador_x_pontos.innerText = localStorage.getItem('pontosjogadorX');
+jogador_o_pontos.innerText = localStorage.getItem('pontosjogadorO');
 
 const botaoInicia = document.querySelector('.botao-inicia') as HTMLButtonElement;
-const botaoEncerra = document.querySelector('.botao-encerra') as HTMLButtonElement;
-
-botaoEncerra.disabled = true;
 
 botaoInicia.addEventListener('click', () => {
     comecarJogo();
 });
 
-botaoEncerra.addEventListener('click', () => {
-    encerrarJogoBotao();
-});
-
 const comecarJogo = (): void => {
     botaoInicia.disabled = true;
-    botaoEncerra.disabled = false;
 
     identificaAcoes();
 }
@@ -115,28 +110,17 @@ const encerrarJogoCompleto = (vencedor = null) => {
         alert('Não houve vencedor, inicie a próxima partida!');
     }
 
-    botaoInicia.disabled = false;
-    botaoEncerra.disabled = true;
-    limparTabuleiro();
+    setTimeout(() => limparTabuleiro(), 2000);
 };
-
-const encerrarJogoBotao = () => {
-    const temCerteza = confirm('Tem certeza que deseja encerrar o jogo?');
-
-    if (temCerteza) {
-        botaoInicia.disabled = false;
-        botaoEncerra.disabled = true;
-
-        limparTabuleiro();
-    }
-}
 
 const alterarPlacar = (vencedor: string): void => {
     const jogador_pontuacao = vencedor === 'fa-x-pai' ? jogador_x_pontos : jogador_o_pontos;
-    let placarAtual = parseInt(jogador_pontuacao.innerText);
-    jogador_pontuacao.innerText = (placarAtual + 1).toString();
-};
+    let placar = parseInt(jogador_pontuacao.innerText) + 1;
+    jogador_pontuacao.innerText = placar.toString();
 
+    const jogadorVencedor = vencedor === 'fa-x-pai' ? 'pontosjogadorX' : 'pontosjogadorO';
+    localStorage.setItem(jogadorVencedor, placar.toString());
+};
 
 const limparTabuleiro = (): void => {
     casas.forEach((casa) => {
