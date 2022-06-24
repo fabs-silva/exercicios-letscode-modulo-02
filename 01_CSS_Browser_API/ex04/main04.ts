@@ -22,13 +22,35 @@ const jogador_o_pontos = document.querySelector('#jogador2>p.tabuleiro-jogador-p
 jogador_x_pontos.innerText = '0';
 jogador_o_pontos.innerText = '0';
 
-document.addEventListener("click", (e: Event) => {
-    const target = e?.target as HTMLButtonElement;
+const botaoInicia = document.querySelector('.botao-inicia') as HTMLButtonElement;
+const botaoEncerra = document.querySelector('.botao-encerra') as HTMLButtonElement;
 
-    if (target.matches(".casa-tabuleiro")) {
-        jogar(target.id);
-    }
+botaoEncerra.disabled = true;
+
+botaoInicia.addEventListener('click', () => {
+    comecarJogo();
 });
+
+botaoEncerra.addEventListener('click', () => {
+    encerrarJogoBotao();
+});
+
+const comecarJogo = (): void => {
+    botaoInicia.disabled = true;
+    botaoEncerra.disabled = false;
+
+    identificaAcoes();
+}
+
+const identificaAcoes = (): void => {
+    document.addEventListener("click", (e: Event) => {
+        const target = e?.target as HTMLButtonElement;
+
+        if (target.matches(".casa-tabuleiro")) {
+            jogar(target.id);
+        }
+    })
+};
 
 const jogar = (id: string): void => {
     const casa = document.getElementById(id);
@@ -56,9 +78,9 @@ const checarVitoria = (jogador: string): void => {
     });
 
     if (vencedor) {
-        encerrarJogo(jogador);
+        encerrarJogoCompleto(jogador);
     } else if (checarEmpate()) {
-        encerrarJogo();
+        encerrarJogoCompleto();
     } else {
         checarVez = !checarVez;
     }
@@ -83,8 +105,9 @@ const checarEmpate = (): boolean => {
     return x + o === 9 ? true : false;
 }
 
-const encerrarJogo = (vencedor = null) => {
+const encerrarJogoCompleto = (vencedor = null) => {
     const jogador = vencedor === 'fa-x-pai' ? 'X' : 'O';
+
     if (vencedor) {
         alert(`O vencedor foi o jogador ${jogador}`);
         alterarPlacar(vencedor);
@@ -92,8 +115,21 @@ const encerrarJogo = (vencedor = null) => {
         alert('Não houve vencedor, inicie a próxima partida!');
     }
 
+    botaoInicia.disabled = false;
+    botaoEncerra.disabled = true;
     limparTabuleiro();
 };
+
+const encerrarJogoBotao = () => {
+    const temCerteza = confirm('Tem certeza que deseja encerrar o jogo?');
+
+    if (temCerteza) {
+        botaoInicia.disabled = false;
+        botaoEncerra.disabled = true;
+
+        limparTabuleiro();
+    }
+}
 
 const alterarPlacar = (vencedor: string): void => {
     const jogador_pontuacao = vencedor === 'fa-x-pai' ? jogador_x_pontos : jogador_o_pontos;
