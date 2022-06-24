@@ -124,21 +124,21 @@ body {
     justify-content: center;
 }
 
-[data--x-ou-o] {
+.icone-tabuleiro {
     margin: 0;
     padding: 0;
     font-size: 6rem;
     font-weight: 900;
 }
 
-[data--x-ou-o="o"] {
+.icone-tabuleiro.fa-circle {
     color: var(--blue);
 }
 
-[data--x-ou-o="x"] {
+.icone-tabuleiro.fa-x {
     color: var(--red);
 }
 
-[data--x-ou-o="winner"] {
+.icone-tabuleiro.vencedor {
     color: var(--green);
 }
