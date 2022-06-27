@@ -1,3 +1,4 @@
+import { removeFromCart, setItemCart } from "./cart";
 import { amountLeftText, Product, productPriceReais } from "./products-list";
 
 export const showModal = (selectedProduct: Product) => {
@@ -11,14 +12,13 @@ export const showModal = (selectedProduct: Product) => {
   modal.innerHTML = `<div class="modal-content">
         <div class="modal-header">Adicionar ao carrinho</div>
         <div class="modal-body">
-        <img class="product-image-modal" src="${selectedProduct.image}" alt="${
-    selectedProduct.name
-  }"/>
+        <img class="product-image-modal" src="${selectedProduct.image}" alt="${selectedProduct.name
+    }"/>
         <div class="product-info-modal">
           <div class="product-name-modal">${selectedProduct.name}</div>
           <div class="product-price-modal">${productPriceReais(
-            selectedProduct.price
-          )}</div>
+      selectedProduct.price
+    )}</div>
           <div class="product-amount-modal">${amountItemText}</div>
           </div>
           <form class="product-select-amount-modal">
@@ -70,6 +70,9 @@ const addProductToCart = (selectedProduct: Product) => {
     };
     cart.push(productCart);
     localStorage.setItem("carrinho", JSON.stringify(cart));
+    const cartList = document.querySelector<HTMLDivElement>(".products-cart")!;
+    setItemCart(cartList, productCart);
+    removeFromCart(cartList, productCart.id);
     modal.remove();
   });
 };

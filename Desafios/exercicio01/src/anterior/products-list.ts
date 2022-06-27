@@ -1,22 +1,3 @@
-import { showModal } from "./modal";
-
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  amountLeft: number;
-}
-
-export interface ProductCart {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  amount: number;
-  total: number;
-}
-
 export const setProductsList = (
   list: HTMLElement,
   products: Product[]

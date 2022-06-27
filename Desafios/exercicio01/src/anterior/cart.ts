@@ -31,18 +31,21 @@ export const renderCart = (list: HTMLElement): void => {
 
     products.slice(0, 4).forEach((prod) => {
       setItemCart(list, prod);
+      removeFromCart(list, prod.id);
     });
     list.append(seeMoreP);
   } else {
     products.forEach((prod) => {
       setItemCart(list, prod);
+      removeFromCart(list, prod.id);
     });
   }
 };
 
-const setItemCart = (list: HTMLElement, prod: ProductCart): void => {
+export const setItemCart = (list: HTMLElement, prod: ProductCart): void => {
   const itemProduct = document.createElement("div");
   itemProduct.classList.add("product-item-cart");
+  itemProduct.id = `product-item-cart-${prod.id}`;
 
   const detailsProduct = document.createElement("div");
   detailsProduct.classList.add("product-details-cart");
@@ -91,15 +94,21 @@ const setItemCart = (list: HTMLElement, prod: ProductCart): void => {
   list.append(itemProduct);
 };
 
-export const removeFromCart = (id: number) => {
+export const removeFromCart = (list: HTMLElement, id: number) => {
   const button = document.getElementById(
     `delete-button-${id}`
   ) as HTMLButtonElement;
   let cart = getCartItems();
 
+  const removedItem = document.getElementById(`product-item-cart-${id}`) as HTMLDivElement;
+
   cart = cart.filter((p) => p.id !== id);
 
   button?.addEventListener("click", () => {
     localStorage.setItem("carrinho", JSON.stringify(cart));
+
+    const cartHtml = document.querySelector('.products-cart') as HTMLDivElement;
+    cartHtml.removeChild(removedItem);
+
   });
 };

@@ -1,4 +1,4 @@
-import { Product } from "./products-list";
+import { Product } from "../anterior/products-list";
 
 export const productsListObject: Product[] = [
   {
