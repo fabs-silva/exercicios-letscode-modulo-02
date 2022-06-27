@@ -1,19 +1,24 @@
 import { ProductCart, productPriceReais } from "./products-list";
 
-export const renderCart = (list: HTMLElement): void => {
-  let products = localStorage.getItem("carrinho");
-  let productsJson: ProductCart[] = [];
-
-  if (products) {
-    productsJson = JSON.parse(products);
+export const getCartItems = (): ProductCart[] => {
+  let cart: ProductCart[] = [];
+  let localStorageCart = localStorage.getItem("carrinho");
+  if (localStorageCart) {
+    cart = JSON.parse(localStorageCart);
   }
+  return cart;
+};
 
-  if (productsJson.length === 0) {
+export const renderCart = (list: HTMLElement): void => {
+  let products = getCartItems();
+
+  if (products.length === 0) {
     const emptyCart = document.createElement("p");
     emptyCart.classList.add("empty-cart");
     emptyCart.innerHTML = `<i class="fa-solid fa-face-sad-tear icon"></i>Não há produtos no carrinho`;
+
     list.append(emptyCart);
-  } else if (productsJson.length > 4) {
+  } else if (products.length > 4) {
     const seeMoreP = document.createElement("p");
     const seeMoreA = document.createElement("a");
 
@@ -21,15 +26,15 @@ export const renderCart = (list: HTMLElement): void => {
 
     seeMoreP.classList.add("see-more-link");
 
-    seeMoreA.innerText = `Ver mais itens (${productsJson.length - 4})...`;
+    seeMoreA.innerText = `Ver mais itens (${products.length - 4})...`;
     seeMoreP.appendChild(seeMoreA);
 
-    productsJson.slice(0, 4).forEach((prod) => {
+    products.slice(0, 4).forEach((prod) => {
       setItemCart(list, prod);
     });
     list.append(seeMoreP);
   } else {
-    productsJson.forEach((prod) => {
+    products.forEach((prod) => {
       setItemCart(list, prod);
     });
   }
@@ -70,6 +75,7 @@ const setItemCart = (list: HTMLElement, prod: ProductCart): void => {
 
   const deleteButtonProduct = document.createElement("button");
   deleteButtonProduct.classList.add("product-delete-cart");
+  deleteButtonProduct.id = `delete-button-${prod.id}`;
   deleteButtonProduct.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
 
   itemProduct.appendChild(imageProduct);
@@ -83,4 +89,17 @@ const setItemCart = (list: HTMLElement, prod: ProductCart): void => {
   extraInfoProduct.appendChild(amountProduct);
 
   list.append(itemProduct);
+};
+
+export const removeFromCart = (id: number) => {
+  const button = document.getElementById(
+    `delete-button-${id}`
+  ) as HTMLButtonElement;
+  let cart = getCartItems();
+
+  cart = cart.filter((p) => p.id !== id);
+
+  button?.addEventListener("click", () => {
+    localStorage.setItem("carrinho", JSON.stringify(cart));
+  });
 };
