@@ -1,10 +1,9 @@
-import { addProdutoCarrinho } from "./carrinho";
-import { listaDeProdutos } from "./lista-produtos-obj";
-import { geraListaProdutos } from "./products-list";
+import { renderCart } from "./cart";
+import { productsListObject } from "./list-products-obj";
+import { setProductsList } from "./products-list";
 
-const listaProdutos = document.querySelector<HTMLDivElement>("#produtos")!;
-const listaCarrinho =
-  document.querySelector<HTMLDivElement>(".produtos-carrinho")!;
+const productsList = document.querySelector<HTMLDivElement>("#products")!;
+const cartList = document.querySelector<HTMLDivElement>(".products-cart")!;
 
-geraListaProdutos(listaProdutos, listaDeProdutos);
-addProdutoCarrinho(listaCarrinho, listaDeProdutos);
+setProductsList(productsList, productsListObject);
+renderCart(cartList);

@@ -1,58 +1,101 @@
-export interface Produto {
+import { showModal } from "./modal";
+
+export interface Product {
   id: number;
-  nome: string;
-  preco: number;
-  imagem: string;
-  estoque: number;
+  name: string;
+  price: number;
+  image: string;
+  amountLeft: number;
 }
 
-export const geraListaProdutos = (lista: HTMLElement, produtos: Produto[]): void => {
-  produtos.forEach((prod) => {
-    const nomeProduto = document.createElement("p");
-    const nomeProdutoLink = document.createElement("a");
-    const valorProduto = document.createElement("span");
-    const estoqueProduto = document.createElement("span");
-    const imagemProduto = document.createElement("img");
-    const botaoProduto = document.createElement("button");
+export interface ProductCart {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  amount: number;
+  total: number;
+}
 
-    nomeProduto.classList.add("produto-nome");
-    valorProduto.classList.add("produto-valor");
-    estoqueProduto.classList.add("produto-estoque");
-    imagemProduto.classList.add("produto-imagem");
-    botaoProduto.classList.add("produto-botao");
+export const setProductsList = (
+  list: HTMLElement,
+  products: Product[]
+): void => {
+  products.forEach((prod) => {
+    const itemProduct = document.createElement("div");
+    itemProduct.classList.add("product-item");
 
-    nomeProdutoLink.href = "#";
+    const spanInfoProduct = document.createElement("div");
+    spanInfoProduct.classList.add("product-info");
 
-    const botaoProdutoIcone = document.createElement("i") as HTMLElement;
-    botaoProdutoIcone.classList.add("fa-solid");
-    botaoProdutoIcone.classList.add("fa-cart-plus");
-    botaoProdutoIcone.classList.add("icone");
+    const nameProduct = document.createElement("p");
+    nameProduct.classList.add("product-name");
 
-    nomeProdutoLink.innerText = prod.nome;
-    valorProduto.innerText = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(prod.preco);
-    estoqueProduto.innerText = `* ${prod.estoque} itens em estoque`;
-    imagemProduto.src = prod.imagem;
+    const nameProductLink = document.createElement("a");
+    nameProductLink.href = "#";
+    nameProductLink.innerText = prod.name;
 
-    botaoProduto.appendChild(botaoProdutoIcone);
-    botaoProduto.append("Comprar");
+    const priceProduct = document.createElement("span");
+    priceProduct.classList.add("product-price");
+    priceProduct.innerText = productPriceReais(prod.price);
 
-    const itemProduto = document.createElement("div");
-    itemProduto.classList.add("produto-item");
+    const imageProduct = document.createElement("img");
+    imageProduct.classList.add("product-image");
+    imageProduct.src = prod.image;
+    imageProduct.alt = prod.name;
 
-    const spanInfoProduto = document.createElement("div");
-    spanInfoProduto.classList.add("produto-info");
+    const buttonProduct = document.createElement("button");
+    buttonProduct.classList.add("product-button");
 
-    itemProduto.appendChild(imagemProduto);
-    itemProduto.appendChild(nomeProduto);
-    nomeProduto.appendChild(nomeProdutoLink);
-    nomeProduto.appendChild(spanInfoProduto);
-    spanInfoProduto.appendChild(valorProduto);
-    spanInfoProduto.appendChild(estoqueProduto);
-    itemProduto.appendChild(botaoProduto);
+    const buttonProductIcon = document.createElement("i") as HTMLElement;
+    buttonProductIcon.classList.add("fa-solid");
+    buttonProductIcon.classList.add("fa-cart-plus");
+    buttonProductIcon.classList.add("icon");
 
-    lista.append(itemProduto);
+    buttonProduct.appendChild(buttonProductIcon);
+    buttonProduct.append("Comprar");
+
+    const amountLeftProduct = document.createElement("span");
+    amountLeftProduct.classList.add("product-amount-left");
+
+    const amountItemText = amountLeftText(prod.amountLeft, buttonProduct);
+
+    amountLeftProduct.innerHTML = amountItemText;
+
+    itemProduct.appendChild(imageProduct);
+    itemProduct.appendChild(nameProduct);
+    nameProduct.appendChild(nameProductLink);
+    nameProduct.appendChild(spanInfoProduct);
+    spanInfoProduct.appendChild(priceProduct);
+    spanInfoProduct.appendChild(amountLeftProduct);
+    itemProduct.appendChild(buttonProduct);
+
+    list.append(itemProduct);
+
+    buttonProduct.addEventListener("click", () => {
+      showModal(prod);
+    });
   });
+};
+
+export const productPriceReais = (price: number): string => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(price);
+};
+
+export const amountLeftText = (
+  amount: number,
+  button?: HTMLButtonElement
+): string => {
+  const amountItemText = amount === 1 ? "item" : "itens";
+
+  if (amount < 1) {
+    button && (button.disabled = true);
+    return `<span class="out-of-stock">Fora de estoque</span>`;
+  } else {
+    button && (button.disabled = false);
+    return `* ${amount} ${amountItemText} em estoque`;
+  }
 };
