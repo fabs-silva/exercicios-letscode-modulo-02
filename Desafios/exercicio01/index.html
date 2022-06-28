@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-    <title>Shopping Cart</title>
-  </head>
 
-  <body>
-    <div id="app">
-      <div id="products"></div>
-      <div id="cart">
-        <div class="header-cart">
-          <i class="fa-solid fa-cart-shopping icon"></i>
-          Meu carrinho
-        </div>
-        <div class="products-cart"></div>
-        <button class="button-cart">
-          <i class="fa-solid fa-credit-card icon"></i>
-          Finalizar Compra
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <title>Shopping Cart</title>
+</head>
+
+<body>
+  <div id="app">
+    <div id="products"></div>
+    <div id="cart">
+      <div class="cart-header">
+        <i class="fa-solid fa-cart-shopping icon"></i>
+        Meu carrinho
       </div>
+      <div class="cart-products"></div>
+      <button class="cart-button">
+        <i class="fa-solid fa-credit-card icon"></i>
+        Finalizar Compra
+      </button>
     </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>

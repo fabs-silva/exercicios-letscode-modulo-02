@@ -1,6 +1,6 @@
-import { CreateProductDTO } from "../models/Product";
+import { Product } from "../models/Product";
 
-export const productsListObject: CreateProductDTO[] = [
+export const productsListObject: Product[] = [
   {
     id: 0,
     name: "Camiseta Feminina Yankees LeMahieu",

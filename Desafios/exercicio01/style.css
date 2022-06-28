@@ -119,16 +119,16 @@ img {
   gap: 0.75rem;
 }
 
-.product-image-modal,
-.product-image-cart {
+.modal-product-image,
+.cart-product-image {
   width: 55px;
 }
 
-.product-info-modal {
+.modal-product-info {
   width: 50%;
 }
 
-.product-name-modal {
+.modal-product-name {
   font-size: 0.9rem;
   font-weight: 700;
   white-space: nowrap;
@@ -137,27 +137,29 @@ img {
   color: var(--blue);
 }
 
-.product-price-modal,
-.product-amount-modal {
+.modal-product-price,
+.modal-product-amount {
   margin-top: 0.2rem;
   font-weight: 400;
 }
-.product-price-modal {
+
+.modal-product-price {
   font-size: 0.85rem;
 }
-.product-amount-modal {
+
+.modal-product-amount {
   font-size: 0.75rem;
 }
 
-.product-select-amount-modal {
+.modal-product-select-amount {
   text-align: center;
 }
 
-.label-modal {
+.modal-label {
   font-size: 0.8rem;
 }
 
-.input-modal {
+.modal-input {
   width: 4rem;
   padding: 0.3rem;
   border: 1px solid var(--dark-gray);
@@ -229,7 +231,7 @@ img {
   font-weight: 400;
 }
 
-.out-of-stock {
+.product-out-of-stock {
   color: var(--red);
 }
 
@@ -256,7 +258,7 @@ img {
   padding: 1.5rem 2rem;
 }
 
-.header-cart {
+.cart-header {
   font-size: 1.2rem;
   font-weight: 700;
   display: flex;
@@ -267,7 +269,7 @@ img {
   margin-right: 10px;
 }
 
-.products-cart {
+.cart-products {
   height: 80vh;
   padding: 1.5rem 0;
   display: flex;
@@ -284,18 +286,18 @@ img {
   font-size: 1rem;
 }
 
-.product-item-cart {
+.cart-product-item {
   display: flex;
   gap: 0.75rem;
   border: 1px dashed var(--dark-gray);
   padding: 0.75rem;
 }
 
-.product-details-cart {
+.cart-product-details {
   width: calc(100% - 76px);
 }
 
-.product-name-cart {
+.cart-product-name {
   font-size: 0.9rem;
   font-weight: 700;
   white-space: nowrap;
@@ -303,24 +305,24 @@ img {
   text-overflow: ellipsis;
 }
 
-.product-info-cart {
+.cart-product-info {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
-.product-price-cart {
+.cart-product-price {
   font-size: 0.85rem;
   margin-top: 0.2rem;
   font-weight: 400;
 }
 
-.product-amount-cart {
+.cart-product-amount {
   font-size: 0.75rem;
   margin-top: 0.4rem;
 }
 
-.product-delete-cart {
+.cart-delete-product {
   background-color: var(--red);
   color: var(--white);
   padding: 0.3rem 0.5rem;
@@ -336,7 +338,7 @@ img {
   font-size: 0.8rem;
 }
 
-.button-cart {
+.cart-button {
   width: 100%;
   padding: 0.75rem 0;
   background-color: var(--green);

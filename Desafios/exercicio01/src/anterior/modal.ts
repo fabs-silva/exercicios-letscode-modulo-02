@@ -12,18 +12,18 @@ export const showModal = (selectedProduct: Product) => {
   modal.innerHTML = `<div class="modal-content">
         <div class="modal-header">Adicionar ao carrinho</div>
         <div class="modal-body">
-        <img class="product-image-modal" src="${selectedProduct.image}" alt="${selectedProduct.name
+        <img class="modal-product-image" src="${selectedProduct.image}" alt="${selectedProduct.name
     }"/>
-        <div class="product-info-modal">
-          <div class="product-name-modal">${selectedProduct.name}</div>
-          <div class="product-price-modal">${productPriceReais(
+        <div class="modal-product-info">
+          <div class="modal-product-name">${selectedProduct.name}</div>
+          <div class="modal-product-price">${productPriceReais(
       selectedProduct.price
     )}</div>
-          <div class="product-amount-modal">${amountItemText}</div>
+          <div class="modal-product-amount">${amountItemText}</div>
           </div>
-          <form class="product-select-amount-modal">
-            <label for="amount" class="label-modal">Quantidade:</label>
-            <input type="number" name="amount" id="amount-item-modal" class="input-modal" />
+          <form class="modal-product-select-amount">
+            <label for="amount" class="modal-label">Quantidade:</label>
+            <input type="number" name="amount" id="amount-item-modal" class="modal-input" />
           </form>
           </div>
           <div class="modal-buttons">
@@ -41,13 +41,6 @@ export const showModal = (selectedProduct: Product) => {
   closeModal();
 };
 
-const getInputValue = (): string => {
-  const input = document.getElementById(
-    "amount-item-modal"
-  ) as HTMLInputElement;
-
-  return input.value;
-};
 
 const addProductToCart = (selectedProduct: Product) => {
   const modal = document.querySelector<HTMLDivElement>("#modal")!;
@@ -70,7 +63,7 @@ const addProductToCart = (selectedProduct: Product) => {
     };
     cart.push(productCart);
     localStorage.setItem("carrinho", JSON.stringify(cart));
-    const cartList = document.querySelector<HTMLDivElement>(".products-cart")!;
+    const cartList = document.querySelector<HTMLDivElement>(".cart-products")!;
     setItemCart(cartList, productCart);
     removeFromCart(cartList, productCart.id);
     modal.remove();

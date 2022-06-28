@@ -1,5 +1,5 @@
 import { ProductContract } from "../models/Product";
-import { amountLeftText, productPriceReais } from "../utils/product-utils";
+import { amountLeftText, productPriceReais } from "../utils";
 
 export const setProductsList = (
   list: HTMLElement,

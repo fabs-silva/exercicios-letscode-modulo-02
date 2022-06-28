@@ -1,4 +1,4 @@
-import { productPriceReais } from "../utils/product-utils";
+import { productPriceReais } from "../utils";
 
 export const getCartItems = (): any => {
   let cart: any = [];
@@ -44,24 +44,24 @@ export const renderCart = (list: HTMLElement): void => {
 
 export const setItemCart = (list: HTMLElement, prod: any): void => {
   const itemProduct = document.createElement("div");
-  itemProduct.classList.add("product-item-cart");
-  itemProduct.id = `product-item-cart-${prod.id}`;
+  itemProduct.classList.add("cart-product-item");
+  itemProduct.id = `cart-product-item-${prod.id}`;
 
   const detailsProduct = document.createElement("div");
-  detailsProduct.classList.add("product-details-cart");
+  detailsProduct.classList.add("cart-product-details");
 
   const imageProduct = document.createElement("img");
-  imageProduct.classList.add("product-image-cart");
+  imageProduct.classList.add("cart-product-image");
   imageProduct.src = prod.image;
 
   const infoProduct = document.createElement("div");
-  infoProduct.classList.add("product-info-cart");
+  infoProduct.classList.add("cart-product-info");
 
   const extraInfoProduct = document.createElement("div");
   extraInfoProduct.classList.add("product-extra-info-cart");
 
   const nameProduct = document.createElement("p");
-  nameProduct.classList.add("product-name-cart");
+  nameProduct.classList.add("cart-product-name");
 
   const nameProductLink = document.createElement("a");
   nameProductLink.href = "#";
@@ -69,15 +69,15 @@ export const setItemCart = (list: HTMLElement, prod: any): void => {
   nameProductLink.innerText = prod.name;
 
   const priceProduct = document.createElement("p");
-  priceProduct.classList.add("product-price-cart");
+  priceProduct.classList.add("cart-product-price");
   priceProduct.innerText = productPriceReais(prod.price);
 
   const amountProduct = document.createElement("p");
-  amountProduct.classList.add("product-amount-cart");
+  amountProduct.classList.add("cart-product-amount");
   amountProduct.innerText = `Quantidade: ${prod.amount}`;
 
   const deleteButtonProduct = document.createElement("button");
-  deleteButtonProduct.classList.add("product-delete-cart");
+  deleteButtonProduct.classList.add("cart-delete-product");
   deleteButtonProduct.id = `delete-button-${prod.id}`;
   deleteButtonProduct.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
 
@@ -101,7 +101,7 @@ export const removeFromCart = (list: HTMLElement, id: number) => {
   let cart = getCartItems();
 
   const removedItem = document.getElementById(
-    `product-item-cart-${id}`
+    `cart-product-item-${id}`
   ) as HTMLDivElement;
 
   cart = cart.filter((p) => p.id !== id);
@@ -109,7 +109,7 @@ export const removeFromCart = (list: HTMLElement, id: number) => {
   button?.addEventListener("click", () => {
     localStorage.setItem("carrinho", JSON.stringify(cart));
 
-    const cartHtml = document.querySelector(".products-cart") as HTMLDivElement;
+    const cartHtml = document.querySelector(".cart-products") as HTMLDivElement;
     cartHtml.removeChild(removedItem);
   });
 };
