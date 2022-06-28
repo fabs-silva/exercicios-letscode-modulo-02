@@ -1,4 +1,4 @@
- //Exercício 01
+/*  //Exercício 01
 
 const canetaVermelha = {
     marca: 'bic',
@@ -499,16 +499,19 @@ class AudioBook extends Livro {
     super(nome, autor, ano);
     this.duracaoEmMinutos = duracaoEmMinutos;
   }
-}
+} */
 
 //Exercício 12
+
+type Constructor<T> = new (...args: any[]) => T;
+
 class Dispositivo {
   calcula() {
     return "Calcula";
   }
 }
 
-function MixinIlumina(superClass: typeof Dispositivo) {
+function MixinIlumina<T extends Constructor<Dispositivo>>(superClass: T) {
   return class extends superClass {
     ilumina() {
       return `Ilumina`;
@@ -516,7 +519,9 @@ function MixinIlumina(superClass: typeof Dispositivo) {
   };
 }
 
-function MixinAcessaInternet(superClass: typeof Dispositivo) {
+function MixinAcessaInternet<T extends Constructor<Dispositivo>>(
+  superClass: T
+) {
   return class extends superClass {
     acessaInternet() {
       return `Acessa a internet`;
@@ -524,7 +529,7 @@ function MixinAcessaInternet(superClass: typeof Dispositivo) {
   };
 }
 
-function MixinTiraFotos(superClass: typeof Dispositivo) {
+function MixinTiraFotos<T extends Constructor<Dispositivo>>(superClass: T) {
   return class extends superClass {
     tiraFotos() {
       return `Tira fotos`;
@@ -532,7 +537,9 @@ function MixinTiraFotos(superClass: typeof Dispositivo) {
   };
 }
 
-function MixinRegistraPassos(superClass: typeof Dispositivo) {
+function MixinRegistraPassos<T extends Constructor<Dispositivo>>(
+  superClass: T
+) {
   return class extends superClass {
     registraPassos() {
       return `Registra Passos`;
@@ -547,18 +554,12 @@ class Celular extends MixinAcessaInternet(
 ) {}
 
 //Exercício 13
+//type Constructor<T> = new (...args: any[]) => T;
+
 class Produto {
   constructor(public nome: string, public valor: number) {
     this.nome = nome;
     this.valor = valor;
-  }
-
-  get getNome() {
-    return this.nome;
-  }
-
-  get getValor() {
-    return this.valor;
   }
 }
 
@@ -567,23 +568,11 @@ class Cartela {
     this.idDoEstabelecimento = idDoEstabelecimento;
     this.carimbos = carimbos;
   }
-
-  get getIdDoEstabelecimento() {
-    return this.idDoEstabelecimento;
-  }
-
-  get getCarimbos() {
-    return this.carimbos;
-  }
 }
 
 class Prescricao {
   constructor(public remedios: string[]) {
     this.remedios = remedios;
-  }
-
-  get getRemedios() {
-    return this.remedios;
   }
 }
 
@@ -593,16 +582,12 @@ class Estabelecimento {
   }
 }
 
-function MixinRestaurante(superClass: typeof Estabelecimento) {
+function MixinRestaurante<T extends Constructor<Estabelecimento>>(
+  superClass: T
+) {
   return class extends superClass {
-    constructor(
-      public id: number,
-      public produtos: Produto[],
-      public pontosParaResgatarPremio: number
-    ) {
-      super(id, produtos);
-      this.pontosParaResgatarPremio = pontosParaResgatarPremio;
-    }
+    public pontosParaResgatarPremio: number;
+
     resgatarPremio(cartela: Cartela) {
       if (cartela.carimbos !== this.pontosParaResgatarPremio) {
         throw new Error("Você ainda não atingiu a quantidade de carimbos");
@@ -614,7 +599,7 @@ function MixinRestaurante(superClass: typeof Estabelecimento) {
   };
 }
 
-function MixinFarmacia(superClass: typeof Estabelecimento) {
+function MixinFarmacia<T extends Constructor<Estabelecimento>>(superClass: T) {
   return class extends superClass {
     comprarRemedios(prescricao: Prescricao, remedios: string[]) {
       const remediosComprar = remedios.map((remedio) => {
@@ -630,7 +615,7 @@ function MixinFarmacia(superClass: typeof Estabelecimento) {
   };
 }
 
-function MixinBar(superClass: typeof Estabelecimento) {
+function MixinBar<T extends Constructor<Estabelecimento>>(superClass: T) {
   return class extends superClass {
     pedirBebida(idade: number, produto: Produto) {
       if (idade < 18) {
@@ -644,4 +629,3 @@ function MixinBar(superClass: typeof Estabelecimento) {
 class Restaurante extends MixinRestaurante(Estabelecimento) {}
 class Bar extends MixinRestaurante(MixinBar(Estabelecimento)) {}
 class Farmacia extends MixinFarmacia(Estabelecimento) {}
- 
