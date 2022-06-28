@@ -1,7 +1,7 @@
-import { ProductCart, productPriceReais } from "./products-list";
+import { productPriceReais } from "../utils/product-utils";
 
-export const getCartItems = (): ProductCart[] => {
-  let cart: ProductCart[] = [];
+export const getCartItems = (): any => {
+  let cart: any = [];
   let localStorageCart = localStorage.getItem("carrinho");
   if (localStorageCart) {
     cart = JSON.parse(localStorageCart);
@@ -29,20 +29,20 @@ export const renderCart = (list: HTMLElement): void => {
     seeMoreA.innerText = `Ver mais itens (${products.length - 4})...`;
     seeMoreP.appendChild(seeMoreA);
 
-    products.slice(0, 4).forEach((prod) => {
+    products.slice(0, 4).forEach((prod: any) => {
       setItemCart(list, prod);
       removeFromCart(list, prod.id);
     });
     list.append(seeMoreP);
   } else {
-    products.forEach((prod) => {
+    products.forEach((prod: any) => {
       setItemCart(list, prod);
       removeFromCart(list, prod.id);
     });
   }
 };
 
-export const setItemCart = (list: HTMLElement, prod: ProductCart): void => {
+export const setItemCart = (list: HTMLElement, prod: any): void => {
   const itemProduct = document.createElement("div");
   itemProduct.classList.add("product-item-cart");
   itemProduct.id = `product-item-cart-${prod.id}`;
@@ -100,15 +100,16 @@ export const removeFromCart = (list: HTMLElement, id: number) => {
   ) as HTMLButtonElement;
   let cart = getCartItems();
 
-  const removedItem = document.getElementById(`product-item-cart-${id}`) as HTMLDivElement;
+  const removedItem = document.getElementById(
+    `product-item-cart-${id}`
+  ) as HTMLDivElement;
 
   cart = cart.filter((p) => p.id !== id);
 
   button?.addEventListener("click", () => {
     localStorage.setItem("carrinho", JSON.stringify(cart));
 
-    const cartHtml = document.querySelector('.products-cart') as HTMLDivElement;
+    const cartHtml = document.querySelector(".products-cart") as HTMLDivElement;
     cartHtml.removeChild(removedItem);
-
   });
 };
