@@ -21,10 +21,8 @@ export const amountLeftText = (
   }
 };
 
-export const getInputValue = (): string => {
-  const input = document.getElementById(
-    "amount-item-modal"
-  ) as HTMLInputElement;
+export const getInputValue = (cssId: string): string => {
+  const input = document.getElementById(cssId) as HTMLInputElement;
 
   return input.value;
 };

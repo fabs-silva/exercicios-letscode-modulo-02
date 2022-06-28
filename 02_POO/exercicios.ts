@@ -1,4 +1,4 @@
-/* //Exercício 01
+ //Exercício 01
 
 const canetaVermelha = {
     marca: 'bic',
@@ -644,4 +644,4 @@ function MixinBar(superClass: typeof Estabelecimento) {
 class Restaurante extends MixinRestaurante(Estabelecimento) {}
 class Bar extends MixinRestaurante(MixinBar(Estabelecimento)) {}
 class Farmacia extends MixinFarmacia(Estabelecimento) {}
- */
+ 

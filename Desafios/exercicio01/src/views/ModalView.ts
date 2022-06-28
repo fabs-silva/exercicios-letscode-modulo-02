@@ -1,4 +1,5 @@
-import { Product } from "../models/Product";
+import { buttonAddToCart, buttonCancelPurchase } from "../controllers/ModalController";
+import { Product, ProductCart } from "../models/Product";
 import { amountLeftText, productPriceReais } from "../utils";
 
 const renderProductModal = (selectedProduct: Product): HTMLDivElement => {
@@ -53,5 +54,14 @@ export const showModal = (selectedProduct: Product): void => {
           </div>`;
 
   app.insertBefore(modal, app.firstChild);
-  appendProductModal(selectedProduct)
+  appendProductModal(selectedProduct);
+  buttonAddToCart(selectedProduct as ProductCart);
+  buttonCancelPurchase();
+};
+
+export const closeModal = () => {
+  const modal = document.querySelector<HTMLDivElement>("#modal")!;
+  if (modal) {
+    modal.remove();
+  }
 };

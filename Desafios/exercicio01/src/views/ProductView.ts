@@ -1,10 +1,10 @@
+import { buttonBuyProduct } from "../controllers/ProductListController";
 import { Product } from "../models/Product";
 import { amountLeftText, productPriceReais } from "../utils";
 
 const renderProductMain = (product: Product): HTMLParagraphElement => {
-  const productItem = document.createElement("p");
+  const productItem = document.createElement("div");
   productItem.classList.add("product-item");
-  productItem.id = `product-item-${product.id}`;
 
   productItem.innerHTML = `
       <img class="product-image" src="${product.image}" alt="${product.name}">
@@ -17,7 +17,7 @@ const renderProductMain = (product: Product): HTMLParagraphElement => {
   )}</span>
         </div>
       </div>
-      <button class="product-button">
+      <button class="product-button" id="product-button-${product.id}">
         <i class="fa-solid fa-cart-plus icon"></i>Comprar
       </button>
     `;
@@ -32,5 +32,6 @@ export const renderProductsListMain = (
   products.forEach((product) => {
     const productItem = renderProductMain(product);
     list.append(productItem);
+    buttonBuyProduct(product);
   });
 };

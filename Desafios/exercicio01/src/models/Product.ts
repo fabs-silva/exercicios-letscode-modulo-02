@@ -42,11 +42,7 @@ function MixinCart(superClass: typeof Product) {
       this.amountSelected = amountSelected;
     }
 
-    get getAmountSelected() {
-      return this.amountSelected;
-    }
-
-    get getTotal() {
+    get total() {
       return this.amountSelected * this.price;
     }
   };
