@@ -1,19 +1,19 @@
 import { Product } from "../models/Product";
 import { amountLeftText, productPriceReais } from "../utils";
 
-export const renderProductItem = (prod: Product): HTMLParagraphElement => {
+const renderProductMain = (product: Product): HTMLParagraphElement => {
   const productItem = document.createElement("p");
   productItem.classList.add("product-item");
-  productItem.id = `product-item-${prod.id}`;
+  productItem.id = `product-item-${product.id}`;
 
   productItem.innerHTML = `
-      <img class="product-image" src=${prod.image} alt=${prod.name}>
+      <img class="product-image" src="${product.image}" alt="${product.name}">
       <div class="product-name">
-        <a href="#">${prod.name}</a>
+        <a href="#">${product.name}</a>
         <div class="product-info">
-          <span class="product-price">${productPriceReais(prod.price)}</span>
+          <span class="product-price">${productPriceReais(product.price)}</span>
           <span class="product-amount-left">${amountLeftText(
-    prod.amountLeft
+    product.amountLeft
   )}</span>
         </div>
       </div>
@@ -23,4 +23,14 @@ export const renderProductItem = (prod: Product): HTMLParagraphElement => {
     `;
 
   return productItem;
+};
+
+export const renderProductsListMain = (
+  list: HTMLElement,
+  products: Product[]
+): void => {
+  products.forEach((product) => {
+    const productItem = renderProductMain(product);
+    list.append(productItem);
+  });
 };

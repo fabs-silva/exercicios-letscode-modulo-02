@@ -1,17 +1,13 @@
 import { Product } from "../models/Product";
 import { amountLeftText, productPriceReais } from "../utils";
 
-export const createModal = (selectedProduct: Product) => {
-  const app = document.querySelector<HTMLDivElement>("#app")!;
-
-  const modal = document.createElement("div");
-  modal.id = "modal";
+const renderProductModal = (selectedProduct: Product): HTMLDivElement => {
+  const product = document.createElement("div");
+  product.classList.add("modal-body");
 
   const amountItemText = amountLeftText(selectedProduct.amountLeft);
 
-  modal.innerHTML = `<div class="modal-content">
-          <div class="modal-header">Adicionar ao carrinho</div>
-          <div class="modal-body">
+  product.innerHTML = `
           <img class="modal-product-image" src="${selectedProduct.image}" alt="${selectedProduct.name
     }"/>
           <div class="modal-product-info">
@@ -24,8 +20,28 @@ export const createModal = (selectedProduct: Product) => {
             <form class="modal-product-select-amount">
               <label for="amount" class="modal-label">Quantidade:</label>
               <input type="number" name="amount" id="amount-item-modal" class="modal-input" />
-            </form>
-            </div>
+            </form>`;
+
+  return product;
+};
+
+const appendProductModal = (selectedProduct: Product): void => {
+  const modalContent = document.querySelector<HTMLDivElement>(".modal-content")!;
+  const modalButtons = document.querySelector<HTMLDivElement>(".modal-buttons")!;
+
+  const product = renderProductModal(selectedProduct);
+
+  modalContent.insertBefore(product, modalButtons);
+}
+
+export const showModal = (selectedProduct: Product): void => {
+  const app = document.querySelector<HTMLDivElement>("#app")!;
+
+  const modal = document.createElement("div");
+  modal.id = "modal";
+
+  modal.innerHTML = `<div class="modal-content">
+          <div class="modal-header">Adicionar ao carrinho</div>
             <div class="modal-buttons">
             <button type="button" class="modal-button-cancel">
               <i class="fa-solid fa-circle-xmark icon"></i>Cancelar
@@ -37,4 +53,5 @@ export const createModal = (selectedProduct: Product) => {
           </div>`;
 
   app.insertBefore(modal, app.firstChild);
+  appendProductModal(selectedProduct)
 };

@@ -28,10 +28,12 @@ body {
 
 button {
   font-family: var(--font);
-  font-size: 1.1rem;
   border: none;
   cursor: pointer;
   border-radius: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 0.9rem;
 }
 
 button:hover,
@@ -73,9 +75,15 @@ input[type="number"] {
 }
 
 img {
+  width: 100%;
   height: auto;
+  object-fit: cover;
   border: 1px solid #eee;
   padding: 0.25rem;
+}
+
+.icon {
+  margin-right: 10px;
 }
 
 #app {
@@ -121,7 +129,7 @@ img {
 
 .modal-product-image,
 .cart-product-image {
-  width: 55px;
+  max-width: 55px;
 }
 
 .modal-product-info {
@@ -174,9 +182,9 @@ img {
 
 .modal-button-add,
 .modal-button-cancel {
-  padding: 0.7rem 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   color: var(--white);
-  font-size: 0.8rem;
 }
 
 .modal-button-add {
@@ -236,14 +244,14 @@ img {
 }
 
 .product-image {
-  width: 80px;
+  max-width: 80px;
 }
 
 .product-button {
-  padding: 1rem 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   background-color: var(--green);
   color: var(--white);
-  font-size: 0.9rem;
 }
 
 #cart {
@@ -265,11 +273,7 @@ img {
   align-items: center;
 }
 
-.icon {
-  margin-right: 10px;
-}
-
-.cart-products {
+.cart-body {
   height: 80vh;
   padding: 1.5rem 0;
   display: flex;
@@ -340,9 +344,9 @@ img {
 
 .cart-button {
   width: 100%;
-  padding: 0.75rem 0;
+  padding-left: 0;
+  padding-right: 0;
   background-color: var(--green);
   color: var(--white);
   align-self: center;
-  font-size: 1rem;
 }
