@@ -1,7 +1,26 @@
-import { Product } from "../models/Product";
+import { Product, ProductCart } from "../models/Product";
 import { showModal } from "../views/ModalView";
 
-export const buttonBuyProduct = (selectedProduct: Product): void => {
+export const createListProducts = (products: Product[]): ProductCart[] => {
+  let productsList: ProductCart[] = [];
+
+  products.forEach(product => {
+
+    const productCartItem = new ProductCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      amountLeft: product.amountLeft,
+      amountSelected: 0
+    })
+    productsList = [...productsList, productCartItem]
+  });
+
+  return productsList;
+}
+
+export const buttonBuyProduct = (selectedProduct: ProductCart): void => {
   const buttonBuyProduct = document.getElementById(
     `product-button-${selectedProduct.id}`
   ) as HTMLButtonElement;

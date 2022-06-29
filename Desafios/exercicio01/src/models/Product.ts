@@ -13,33 +13,42 @@ export interface AddToCartContract extends ProductContract {
 export class Product implements ProductContract {
   public readonly id: number;
   public name: string;
-  public price: number;
+  #price: number;
   public image: string;
-  public amountLeft: number;
+  #amountLeft: number;
 
-  constructor({ id, name, price, image, amountLeft }: ProductContract) {
-    if (id === null || name === null || price === null || amountLeft === null) {
-      throw new Error("O campo deve ser preenchido");
-    }
+  constructor(data: ProductContract) {
 
-    if (isNaN(price) || isNaN(amountLeft)) {
-      throw new Error("O campo deve ser preenchido com um número");
-    }
-
-    if (price < 0 || amountLeft < 0) {
-      throw new Error("O valor não pode ser menor do que 0");
-    }
-
+    const { id, name, price, image, amountLeft } = data as ProductContract;
     this.id = id;
     this.name = name;
     this.price = price;
     this.image = image;
     this.amountLeft = amountLeft;
   }
+
+  get price() {
+    return this.#price
+  }
+
+  set price(price: number) {
+    numberValidation(price);
+
+    this.#price = price;
+  }
+
+  get amountLeft() {
+    return this.#amountLeft
+  }
+
+  set amountLeft(amountLeft: number) {
+    numberValidation(amountLeft);
+    this.#amountLeft = amountLeft;
+  }
 }
 
 export class ProductCart extends Product {
-  public amountSelected: number;
+  #amountSelected: number;
 
   constructor({
     id,
@@ -47,21 +56,34 @@ export class ProductCart extends Product {
     price,
     image,
     amountLeft,
-    amountSelected,
+    amountSelected
   }: AddToCartContract) {
     super({ id, name, price, image, amountLeft });
-    if (isNaN(amountSelected)) {
-      throw new Error("O campo deve ser preenchido com um número");
-    }
 
-    if (amountSelected < 0) {
-      throw new Error("O valor não pode ser menor do que 0");
-    }
 
     this.amountSelected = amountSelected;
   }
 
+  get amountSelected() {
+    return this.#amountSelected
+  }
+
+  set amountSelected(amountSelected: number) {
+
+    this.#amountSelected = amountSelected;
+  }
+
   get total() {
     return this.amountSelected * this.price;
+  }
+}
+
+const numberValidation = (property: number): void => {
+  if (isNaN(property)) {
+    throw new Error("O campo deve ser preenchido com um número");
+  }
+
+  if (property < 0) {
+    throw new Error("O valor não pode ser menor do que 0");
   }
 }

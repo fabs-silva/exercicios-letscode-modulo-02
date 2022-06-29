@@ -1,4 +1,4 @@
-import { getProductsLocalStorage } from "../controllers/CartController";
+import { getProductsLocalStorage, removeFromCart } from "../controllers/CartController";
 import { ProductCart } from "../models/Product";
 import { getProductImage, productPriceReais } from "../utils";
 
@@ -16,26 +16,31 @@ const renderProductCart = (product: ProductCart): HTMLDivElement => {
         <a href="#">${product.name}</a>
       </p>
       <div class="cart-product-info">
-        <div class="product-extra-info-cart">
+        <div class="cart-product-price-and-amount">
           <p class="cart-product-price">${productPriceReais(product.price)}</p>
-          <p class="cart-product-amount">Quantidade: ${
-            product.amountSelected
-          }</p>
+          <p class="cart-product-amount">Qtde: ${product.amountSelected}</p>
         </div>
-        <button class="cart-delete-product" id="delete-button-${product.id}">
-          <i class="fa-solid fa-trash-can"></i>
-        </button>
+        <div class="cart-product-total-delete">
+          <p class="cart-product-total-price">Total: ${productPriceReais(product.total)}</p>
+          <button class="cart-delete-product" id="delete-button-${product.id}">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
       </div>
     </div>`;
-
+  console.log(product)
   return itemProduct;
 };
 
-export const renderProductsListCart = (list: HTMLDivElement): void => {
+const renderProductsListCart = (list: HTMLDivElement): void => {
   const products = getProductsLocalStorage();
   products.length > 0 &&
     products.forEach((product) => {
       const productItem = renderProductCart(product);
       list.append(productItem);
+      removeFromCart(product.id);
     });
 };
+
+export { renderProductCart, renderProductsListCart };
+

@@ -232,6 +232,7 @@ img {
   display: flex;
   flex-direction: column;
   font-weight: 400;
+  font-size: 1rem;
 }
 
 .product-amount-left {
@@ -310,20 +311,38 @@ img {
 }
 
 .cart-product-info {
+  width: 100%;
+}
+
+.cart-product-price-and-amount,
+.cart-product-total-delete {
   display: flex;
+  font-size: 0.8rem;
+}
+
+.cart-product-price-and-amount {
+  width: 70%;
+  margin-top: 0.4rem;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .cart-product-price {
-  font-size: 0.85rem;
-  margin-top: 0.2rem;
   font-weight: 400;
 }
 
 .cart-product-amount {
   font-size: 0.75rem;
-  margin-top: 0.4rem;
+}
+
+.cart-product-total-delete {
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cart-product-total-price {
+  font-size: 0.85rem;
+  font-weight: 400;
 }
 
 .cart-delete-product {

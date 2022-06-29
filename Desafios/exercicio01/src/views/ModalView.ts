@@ -1,11 +1,11 @@
 import {
   buttonAddToCart,
-  buttonCancelPurchase,
+  buttonCancelPurchase
 } from "../controllers/ModalController";
-import { Product, ProductCart } from "../models/Product";
+import { ProductCart } from "../models/Product";
 import { amountLeftText, getProductImage, productPriceReais } from "../utils";
 
-const renderProductModal = (selectedProduct: Product): HTMLDivElement => {
+const renderProductModal = (selectedProduct: ProductCart): HTMLDivElement => {
   const productImage = getProductImage(selectedProduct);
   const product = document.createElement("div");
   product.classList.add("modal-body");
@@ -17,8 +17,8 @@ const renderProductModal = (selectedProduct: Product): HTMLDivElement => {
           <div class="modal-product-info">
             <div class="modal-product-name">${selectedProduct.name}</div>
             <div class="modal-product-price">${productPriceReais(
-              selectedProduct.price
-            )}</div>
+    selectedProduct.price
+  )}</div>
             <div class="modal-product-amount">${amountItemText}</div>
             </div>
             <form class="modal-product-select-amount">
@@ -29,7 +29,7 @@ const renderProductModal = (selectedProduct: Product): HTMLDivElement => {
   return product;
 };
 
-const appendProductModal = (selectedProduct: Product): void => {
+const appendProductModal = (selectedProduct: ProductCart): void => {
   const modalContent =
     document.querySelector<HTMLDivElement>(".modal-content")!;
   const modalButtons =
@@ -40,7 +40,7 @@ const appendProductModal = (selectedProduct: Product): void => {
   modalContent.insertBefore(product, modalButtons);
 };
 
-export const showModal = (selectedProduct: Product): void => {
+export const showModal = (selectedProduct: ProductCart): void => {
   const app = document.querySelector<HTMLDivElement>("#app")!;
 
   const modal = document.createElement("div");
@@ -60,7 +60,7 @@ export const showModal = (selectedProduct: Product): void => {
 
   app.insertBefore(modal, app.firstChild);
   appendProductModal(selectedProduct);
-  buttonAddToCart(selectedProduct as ProductCart);
+  buttonAddToCart(selectedProduct);
   buttonCancelPurchase();
 };
 

@@ -1,5 +1,6 @@
 import { ProductCart } from "../models/Product";
 import { getInputValue } from "../utils";
+import { renderProductCart } from "../views/CartView";
 
 const getProductsLocalStorage = (): ProductCart[] => {
   let cart: ProductCart[] = [];
@@ -53,7 +54,8 @@ const addProductAlreadyInCart = (
   return null;
 };
 
-const addProductToCart = (selectedProduct: ProductCart): ProductCart => {
+const addProductToCart = (selectedProduct: ProductCart): void => {
+  const cartHtml = document.querySelector(".cart-body") as HTMLDivElement;
   let cart = getProductsLocalStorage();
 
   const amountSelected = checkAmountSelected(selectedProduct);
@@ -63,8 +65,6 @@ const addProductToCart = (selectedProduct: ProductCart): ProductCart => {
   if (productAlreadyInCart) {
     cart = cart.filter((p) => p.id !== productAlreadyInCart.id);
     cart.push(productAlreadyInCart);
-    saveProductLocalStorage(cart);
-    return productAlreadyInCart;
   } else {
     const productCart = {
       id: selectedProduct.id,
@@ -75,12 +75,42 @@ const addProductToCart = (selectedProduct: ProductCart): ProductCart => {
       amountSelected: amountSelected,
       total: selectedProduct.total,
     };
+
     cart.push(productCart);
 
-    saveProductLocalStorage(cart);
 
-    return productCart;
+    const newItem = renderProductCart(productCart);
+    cartHtml.appendChild(newItem);
+    removeFromCart(productCart.id)
   }
+
+
+  saveProductLocalStorage(cart);
+
+
 };
 
-export { getProductsLocalStorage, addProductToCart };
+const removeFromCart = (id: number): void => {
+
+  const button = document.getElementById(
+    `delete-button-${id}`
+  ) as HTMLButtonElement;
+
+  let cart = getProductsLocalStorage();
+
+  const removedItem = document.getElementById(
+    `cart-product-item-${id}`
+  ) as HTMLDivElement;
+
+  cart = cart.filter((p) => p.id !== id);
+
+  button?.addEventListener("click", () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    const cartHtml = document.querySelector(".cart-body") as HTMLDivElement;
+    cartHtml.removeChild(removedItem);
+  });
+};
+
+export { getProductsLocalStorage, addProductToCart, removeFromCart };
+

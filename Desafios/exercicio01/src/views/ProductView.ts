@@ -1,8 +1,8 @@
 import { buttonBuyProduct } from "../controllers/ProductListController";
-import { Product } from "../models/Product";
+import { ProductCart } from "../models/Product";
 import { amountLeftText, getProductImage, productPriceReais } from "../utils";
 
-const renderProductMain = (product: Product): HTMLParagraphElement => {
+const renderProductMain = (product: ProductCart): HTMLParagraphElement => {
   const productImage = getProductImage(product);
 
   const productItem = document.createElement("div");
@@ -15,8 +15,8 @@ const renderProductMain = (product: Product): HTMLParagraphElement => {
         <div class="product-info">
           <span class="product-price">${productPriceReais(product.price)}</span>
           <span class="product-amount-left">${amountLeftText(
-            product.amountLeft
-          )}</span>
+    product.amountLeft
+  )}</span>
         </div>
       </div>
       <button class="product-button" id="product-button-${product.id}">
@@ -29,7 +29,7 @@ const renderProductMain = (product: Product): HTMLParagraphElement => {
 
 export const renderProductsListMain = (
   list: HTMLElement,
-  products: Product[]
+  products: ProductCart[]
 ): void => {
   products.forEach((product) => {
     const productItem = renderProductMain(product);
