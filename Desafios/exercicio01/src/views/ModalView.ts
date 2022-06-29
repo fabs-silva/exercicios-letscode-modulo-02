@@ -1,21 +1,24 @@
-import { buttonAddToCart, buttonCancelPurchase } from "../controllers/ModalController";
+import {
+  buttonAddToCart,
+  buttonCancelPurchase,
+} from "../controllers/ModalController";
 import { Product, ProductCart } from "../models/Product";
-import { amountLeftText, productPriceReais } from "../utils";
+import { amountLeftText, getProductImage, productPriceReais } from "../utils";
 
 const renderProductModal = (selectedProduct: Product): HTMLDivElement => {
+  const productImage = getProductImage(selectedProduct);
   const product = document.createElement("div");
   product.classList.add("modal-body");
 
   const amountItemText = amountLeftText(selectedProduct.amountLeft);
 
   product.innerHTML = `
-          <img class="modal-product-image" src="${selectedProduct.image}" alt="${selectedProduct.name
-    }"/>
+          ${productImage}
           <div class="modal-product-info">
             <div class="modal-product-name">${selectedProduct.name}</div>
             <div class="modal-product-price">${productPriceReais(
-      selectedProduct.price
-    )}</div>
+              selectedProduct.price
+            )}</div>
             <div class="modal-product-amount">${amountItemText}</div>
             </div>
             <form class="modal-product-select-amount">
@@ -27,13 +30,15 @@ const renderProductModal = (selectedProduct: Product): HTMLDivElement => {
 };
 
 const appendProductModal = (selectedProduct: Product): void => {
-  const modalContent = document.querySelector<HTMLDivElement>(".modal-content")!;
-  const modalButtons = document.querySelector<HTMLDivElement>(".modal-buttons")!;
+  const modalContent =
+    document.querySelector<HTMLDivElement>(".modal-content")!;
+  const modalButtons =
+    document.querySelector<HTMLDivElement>(".modal-buttons")!;
 
   const product = renderProductModal(selectedProduct);
 
   modalContent.insertBefore(product, modalButtons);
-}
+};
 
 export const showModal = (selectedProduct: Product): void => {
   const app = document.querySelector<HTMLDivElement>("#app")!;

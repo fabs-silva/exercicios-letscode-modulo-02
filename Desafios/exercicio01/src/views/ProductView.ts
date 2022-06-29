@@ -1,20 +1,22 @@
 import { buttonBuyProduct } from "../controllers/ProductListController";
 import { Product } from "../models/Product";
-import { amountLeftText, productPriceReais } from "../utils";
+import { amountLeftText, getProductImage, productPriceReais } from "../utils";
 
 const renderProductMain = (product: Product): HTMLParagraphElement => {
+  const productImage = getProductImage(product);
+
   const productItem = document.createElement("div");
   productItem.classList.add("product-item");
 
   productItem.innerHTML = `
-      <img class="product-image" src="${product.image}" alt="${product.name}">
+      ${productImage}
       <div class="product-name">
         <a href="#">${product.name}</a>
         <div class="product-info">
           <span class="product-price">${productPriceReais(product.price)}</span>
           <span class="product-amount-left">${amountLeftText(
-    product.amountLeft
-  )}</span>
+            product.amountLeft
+          )}</span>
         </div>
       </div>
       <button class="product-button" id="product-button-${product.id}">

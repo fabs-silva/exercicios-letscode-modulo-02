@@ -1,4 +1,4 @@
-
+import { Product, ProductCart } from "./../models/Product";
 export const productPriceReais = (price: number): string => {
   return new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -25,4 +25,10 @@ export const getInputValue = (cssId: string): string => {
   const input = document.getElementById(cssId) as HTMLInputElement;
 
   return input.value;
+};
+
+export const getProductImage = (product: Product | ProductCart): string => {
+  return product.image === ""
+    ? `<img class="cart-product-image" src="https://www.cer-cavalos.com/images/not_found.png" alt="Produto sem imagem">`
+    : `<img class="cart-product-image" src="${product.image}" alt="${product.name}">`;
 };
