@@ -29,8 +29,7 @@ const checkAmountSelected = (selectedProduct: ProductCart): number => {
 const addProductAlreadyInCart = (
   cart: ProductCart[],
   selectedProduct: ProductCart
-): ProductCart[] | null => {
-  let newCart = cart;
+): ProductCart | null => {
   const amountSelected = checkAmountSelected(selectedProduct);
 
   let productInCart: ProductCart | undefined = cart.find(
@@ -44,18 +43,11 @@ const addProductAlreadyInCart = (
       throw new Error("Quantidade maior do que a disponível em estoque");
     }
 
-    newCart = cart.filter((p) => p.id !== productInCart?.id);
-
-    newCart = [
-      ...newCart,
-      {
-        ...productInCart,
-        amountSelected: newAmountSelected,
-        total: newAmountSelected * productInCart.price,
-      },
-    ];
-
-    return newCart;
+    return {
+      ...productInCart,
+      amountSelected: newAmountSelected,
+      total: newAmountSelected * productInCart.price,
+    };
   }
 
   return null;
@@ -69,7 +61,10 @@ const addProductToCart = (selectedProduct: ProductCart): ProductCart => {
   const productAlreadyInCart = addProductAlreadyInCart(cart, selectedProduct);
 
   if (productAlreadyInCart) {
-    saveProductLocalStorage(productAlreadyInCart);
+    cart = cart.filter((p) => p.id !== productAlreadyInCart.id);
+    cart.push(productAlreadyInCart);
+    saveProductLocalStorage(cart);
+    return productAlreadyInCart;
   } else {
     const productCart = {
       id: selectedProduct.id,
@@ -80,13 +75,12 @@ const addProductToCart = (selectedProduct: ProductCart): ProductCart => {
       amountSelected: amountSelected,
       total: selectedProduct.total,
     };
-
     cart.push(productCart);
 
     saveProductLocalStorage(cart);
-  }
 
-  return productCart;
+    return productCart;
+  }
 };
 
 export { getProductsLocalStorage, addProductToCart };
