@@ -14,7 +14,7 @@
   --darker-gray: #444444;
   --red: #d61f1b;
   --black-alpha: rgba(0, 0, 0, 0.1);
-  --font: "Work Sans", sans-serif;
+  --font: 'Work Sans', sans-serif;
 }
 
 body {
@@ -70,7 +70,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -123,8 +123,8 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 0.75rem;
-  gap: 0.75rem;
+  padding: 1.25rem;
+  gap: 1rem;
 }
 
 .modal-product-image,
@@ -133,7 +133,11 @@ img {
 }
 
 .modal-product-info {
-  width: 50%;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
 }
 
 .modal-product-name {
@@ -143,6 +147,11 @@ img {
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--blue);
+}
+
+.modal-product-extra-info {
+  display: flex;
+  justify-content: space-between;
 }
 
 .modal-product-price,
@@ -156,7 +165,7 @@ img {
 }
 
 .modal-product-amount {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 }
 
 .modal-product-select-amount {
@@ -172,6 +181,8 @@ img {
   padding: 0.3rem;
   border: 1px solid var(--dark-gray);
   margin-top: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 300;
 }
 
 .modal-buttons {
@@ -182,8 +193,7 @@ img {
 
 .modal-button-add,
 .modal-button-cancel {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.75rem 1rem;
   color: var(--white);
 }
 

@@ -1,25 +1,26 @@
 import {
   buttonAddToCart,
-  buttonCancelPurchase
-} from "../controllers/ModalController";
-import { ProductCart } from "../models/Product";
-import { amountLeftText, getProductImage, productPriceReais } from "../utils";
+  buttonCancelPurchase,
+} from '../controllers/ModalController';
+import { ProductCart } from '../models/Product';
+import { amountLeftText, getProductImage, productPriceReais } from '../utils';
 
 const renderProductModal = (selectedProduct: ProductCart): HTMLDivElement => {
-  const productImage = getProductImage(selectedProduct);
-  const product = document.createElement("div");
-  product.classList.add("modal-body");
-
-  const amountItemText = amountLeftText(selectedProduct.amountLeft);
+  const product = document.createElement('div');
+  product.classList.add('modal-body');
 
   product.innerHTML = `
-          ${productImage}
+          ${getProductImage(selectedProduct)}
           <div class="modal-product-info">
-            <div class="modal-product-name">${selectedProduct.name}</div>
-            <div class="modal-product-price">${productPriceReais(
-    selectedProduct.price
-  )}</div>
-            <div class="modal-product-amount">${amountItemText}</div>
+            <p class="modal-product-name">${selectedProduct.name}</p>
+            <div class="modal-product-extra-info">
+              <p class="modal-product-price">${productPriceReais(
+                selectedProduct.price
+              )}</p>
+              <p class="modal-product-amount">${amountLeftText(
+                selectedProduct.amountLeft
+              )}</p>
+            </div>
             </div>
             <form class="modal-product-select-amount">
               <label for="amount" class="modal-label">Quantidade:</label>
@@ -31,9 +32,9 @@ const renderProductModal = (selectedProduct: ProductCart): HTMLDivElement => {
 
 const appendProductModal = (selectedProduct: ProductCart): void => {
   const modalContent =
-    document.querySelector<HTMLDivElement>(".modal-content")!;
+    document.querySelector<HTMLDivElement>('.modal-content')!;
   const modalButtons =
-    document.querySelector<HTMLDivElement>(".modal-buttons")!;
+    document.querySelector<HTMLDivElement>('.modal-buttons')!;
 
   const product = renderProductModal(selectedProduct);
 
@@ -41,10 +42,10 @@ const appendProductModal = (selectedProduct: ProductCart): void => {
 };
 
 export const showModal = (selectedProduct: ProductCart): void => {
-  const app = document.querySelector<HTMLDivElement>("#app")!;
+  const app = document.querySelector<HTMLDivElement>('#app')!;
 
-  const modal = document.createElement("div");
-  modal.id = "modal";
+  const modal = document.createElement('div');
+  modal.id = 'modal';
 
   modal.innerHTML = `<div class="modal-content">
           <div class="modal-header">Adicionar ao carrinho</div>
@@ -65,7 +66,7 @@ export const showModal = (selectedProduct: ProductCart): void => {
 };
 
 export const closeModal = () => {
-  const modal = document.querySelector<HTMLDivElement>("#modal")!;
+  const modal = document.querySelector<HTMLDivElement>('#modal')!;
   if (modal) {
     modal.remove();
   }

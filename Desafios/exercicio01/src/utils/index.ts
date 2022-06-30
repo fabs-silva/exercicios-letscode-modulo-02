@@ -1,16 +1,13 @@
-import { Product, ProductCart } from "./../models/Product";
-export const productPriceReais = (price: number): string => {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+import { Product, ProductCart } from './../models/Product';
+const productPriceReais = (price: number): string => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   }).format(price);
 };
 
-export const amountLeftText = (
-  amount: number,
-  button?: HTMLButtonElement
-): string => {
-  const amountItemText = amount === 1 ? "item" : "itens";
+const amountLeftText = (amount: number, button?: HTMLButtonElement): string => {
+  const amountItemText = amount === 1 ? 'item' : 'itens';
 
   if (amount < 1) {
     button && (button.disabled = true);
@@ -21,14 +18,32 @@ export const amountLeftText = (
   }
 };
 
-export const getInputValue = (cssId: string): string => {
+const getInputValue = (cssId: string): string => {
   const input = document.getElementById(cssId) as HTMLInputElement;
 
   return input.value;
 };
 
 export const getProductImage = (product: Product | ProductCart): string => {
-  return product.image === ""
-    ? `<img class="cart-product-image" src="https://www.cer-cavalos.com/images/not_found.png" alt="Produto sem imagem">`
+  return product.image === ''
+    ? `<img class="cart-product-image" src="https://www.cer-cavalos.com/images/not_found.png" alt="Imagem não disponível">`
     : `<img class="cart-product-image" src="${product.image}" alt="${product.name}">`;
+};
+
+const checkAmountSelected = (
+  amountSelected: number,
+  amountLeft: number
+): number => {
+  if (amountSelected > amountLeft) {
+    throw new Error('Quantidade maior do que a disponível em estoque');
+  }
+
+  return amountSelected;
+};
+
+export {
+  productPriceReais,
+  amountLeftText,
+  getInputValue,
+  checkAmountSelected,
 };
