@@ -507,7 +507,7 @@ type Constructor<T> = new (...args: any[]) => T;
 
 class Dispositivo {
   calcula() {
-    return "Calcula";
+    return 'Calcula';
   }
 }
 
@@ -586,15 +586,19 @@ function MixinRestaurante<T extends Constructor<Estabelecimento>>(
   superClass: T
 ) {
   return class extends superClass {
-    public pontosParaResgatarPremio: number;
+    public _pontosParaResgatarPremio: number;
+
+    set pontosParaResgatar(pontosParaResgatar: number) {
+      this._pontosParaResgatarPremio = pontosParaResgatar;
+    }
 
     resgatarPremio(cartela: Cartela) {
-      if (cartela.carimbos !== this.pontosParaResgatarPremio) {
-        throw new Error("Você ainda não atingiu a quantidade de carimbos");
+      if (cartela.carimbos !== this._pontosParaResgatarPremio) {
+        throw new Error('Você ainda não atingiu a quantidade de carimbos');
       }
 
       cartela.carimbos = 0;
-      return "Prêmio";
+      return 'Prêmio';
     }
   };
 }
@@ -607,7 +611,7 @@ function MixinFarmacia<T extends Constructor<Estabelecimento>>(superClass: T) {
       });
 
       if (!remediosComprar) {
-        throw new Error("Não há remédios a serem comprados");
+        throw new Error('Não há remédios a serem comprados');
       }
 
       return remediosComprar;
@@ -619,7 +623,7 @@ function MixinBar<T extends Constructor<Estabelecimento>>(superClass: T) {
   return class extends superClass {
     pedirBebida(idade: number, produto: Produto) {
       if (idade < 18) {
-        throw new Error("É proibido vender bebidas a menores de 18 anos");
+        throw new Error('É proibido vender bebidas a menores de 18 anos');
       }
       return produto;
     }

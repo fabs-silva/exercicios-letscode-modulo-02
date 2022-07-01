@@ -6,16 +6,18 @@
 
 :root {
   --black: #121212;
-  --green: #4f906d;
-  --blue: #07137e;
+  --orange: #f77f00;
+  --blue: #003049;
+  --lighter-blue: #025581;
+  --yellow: #fcbf49;
   --white: #ffffff;
   --gray: #f6f6f6;
   --dark-gray: #929292;
   --darker-gray: #444444;
-  --red: #d61f1b;
+  --red: #d62828;
   --black-alpha: rgba(0, 0, 0, 0.1);
-  --font-body: "Fredoka", sans-serif;
-  --font-title: "Goldman", sans-serif;
+  --font-body: 'Fredoka', sans-serif;
+  --font-title: 'Goldman', sans-serif;
 }
 
 body {
@@ -29,6 +31,7 @@ body {
 
 h1 {
   font-family: var(--font-title);
+  color: var(--lighter-blue);
 }
 
 button {
@@ -59,7 +62,6 @@ button:disabled:active {
 }
 
 a {
-  color: var(--blue);
   text-decoration: none;
 }
 
@@ -89,7 +91,7 @@ ul {
 }
 
 #app-menu {
-  width: 15%;
+  width: 14rem;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -98,6 +100,29 @@ ul {
   justify-content: space-between;
   box-shadow: 2px 0px 5px var(--black-alpha);
   padding: 1.5rem 2rem;
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.app-logo {
+  height: 20%;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  color: var(--yellow);
+}
+
+.app-navigation {
+  height: 80%;
+}
+
+.app-navigation li {
+  padding: 0.75rem 0;
+  text-align: center;
+}
+
+.app-navigation li a {
+  color: var(--white);
 }
 
 #app-body {
@@ -105,7 +130,175 @@ ul {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  width: 85%;
+  width: calc(100vw - 14rem);
   background-color: var(--gray);
   padding: 1.5rem 0;
+}
+
+.app-title {
+  margin-bottom: 0.75rem;
+}
+
+.app-form-create-musician {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+}
+
+.app-form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-form-label {
+  min-width: 10rem;
+}
+
+.app-form-input {
+  padding: 1rem 0.5rem;
+  width: 100%;
+  min-width: 15rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--darker-gray);
+}
+
+.app-form-list {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+#instruments-list,
+#genres-list {
+  margin: 0.75rem 0;
+}
+
+.app-form-list li {
+  border-radius: 0.5rem;
+  border: 1px solid var(--darker-gray);
+  color: var(--darker-gray);
+  background-color: var(--white);
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.app-form-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.75rem;
+  gap: 1.5rem;
+}
+
+.app-form-button {
+  background-color: var(--orange);
+  color: var(--white);
+  min-width: 10rem;
+  font-size: 1rem;
+}
+
+.app-search-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.app-search-options p {
+  font-size: 1.1rem;
+}
+
+.app-search-options-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.app-search-form-group {
+  width: 50%;
+}
+
+.app-search-form-group label {
+  font-size: 1rem;
+}
+
+.app-search-form-group input,
+.app-email-form-group input {
+  margin-top: 0.5rem;
+}
+
+.app-list-search-musician {
+  width: 80%;
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.app-list-search-header,
+.app-list-search-body {
+  width: 100%;
+}
+
+.app-list-search-header,
+.app-list-search-body ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.app-list-search-header,
+.app-data-header {
+  font-weight: 400;
+  color: var(--lighter-blue);
+  margin-bottom: 0.75rem;
+}
+
+.app-list-search-body ul {
+  border-bottom: 1px solid var(--dark-gray);
+  padding: 1rem 0;
+  font-size: 1rem;
+}
+
+.app-list-search-body ul:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.app-list-search-body span {
+  border-radius: 0.5rem;
+  border: 1px solid var(--darker-gray);
+  color: var(--darker-gray);
+  background-color: var(--white);
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.app-form-list li {
+  display: flex;
+}
+
+.app-data {
+  margin-bottom: 1.5rem;
+}
+
+.app-data-header,
+.app-data-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.delete-from-list {
+  margin-top: -9px;
+  margin-left: 5px;
+}
+
+.app-data-changeable {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
 }
