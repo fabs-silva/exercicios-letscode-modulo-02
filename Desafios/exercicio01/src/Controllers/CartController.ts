@@ -1,61 +1,56 @@
-import { ProductCart } from '../models/Product';
-import { checkAmountSelected } from '../utils';
+import { ProductCart } from "../models/Product";
+import { checkAmountSelected } from "../utils";
+import { renderProductCart } from "../views/CartView";
 import {
   getProductsLocalStorage,
-  saveProductLocalStorage,
-} from './LocalStorageController';
+  saveProductLocalStorage
+} from "./LocalStorageController";
 
 const checkProductAlreadyInCart = (
   selectedProduct: ProductCart
-): ProductCart => {
+  amountSelected: number
+): ProductCart | undefined => {
   let cart = getProductsLocalStorage();
 
   let productInCart = cart.find((p) => p.id === selectedProduct.id);
 
   if (!productInCart) {
-    return selectedProduct;
+    return;
+  }
+
+  const amountSelectedItem = checkAmountSelected(
+    amountSelected,
+    productInCart.amountLeft + productInCart.amountSelected
+  );
+
+  if (amountSelectedItem) {
+    productInCart.amountSelected += amountSelected;
+    productInCart.amountLeft -= amountSelected;
   }
 
   return productInCart;
 };
 
 const addProductToCart = (selectedProduct: ProductCart): void => {
-  const product = checkProductAlreadyInCart(selectedProduct);
+  const productAlreadyInCart = checkProductAlreadyInCart(selectedProduct);
 
-  const cartHtml = document.querySelector('.cart-body') as HTMLDivElement;
+  const cartHtml = document.querySelector(".cart-body") as HTMLDivElement;
   let cart = getProductsLocalStorage();
 
-  saveProductLocalStorage(cart);
-};
-
-export {};
-
-const cartHtml = document.querySelector('.cart-body') as HTMLDivElement;
-let cart = getProductsLocalStorage();
-
-const amountSelected = checkAmountSelected(selectedProduct);
-
-const productAlreadyInCart = addProductAlreadyInCart(cart, selectedProduct);
-
-if (productAlreadyInCart) {
+  if (productAlreadyInCart) {
+    const cartItem = document.getElementById(`cart-product-item-${productAlreadyInCart.id}`) as HTMLDivElement;
   cart = cart.filter((p) => p.id !== productAlreadyInCart.id);
   cart.push(productAlreadyInCart);
+  cartHtml.removeChild(cartItem);
 } else {
-  const productCart = {
-    id: selectedProduct.id,
-    name: selectedProduct.name,
-    price: selectedProduct.price,
-    image: selectedProduct.image,
-    amountLeft: selectedProduct.amountLeft,
-    amountSelected: amountSelected,
-    total: selectedProduct.total,
-  };
-
-  cart.push(productCart);
-
-  const newItem = renderProductCart(productCart);
+  cart.push(selectedProduct);
+  const newItem = renderProductCart(selectedProduct);
   cartHtml.appendChild(newItem);
-  removeFromCart(productCart.id);
+ 
 }
+ saveProductLocalStorage(cart);
 
-saveProductLocalStorage(cart);
+};
+
+export { addProductToCart };
+
