@@ -16,8 +16,8 @@
   --darker-gray: #444444;
   --red: #d62828;
   --black-alpha: rgba(0, 0, 0, 0.1);
-  --font-body: 'Fredoka', sans-serif;
-  --font-title: 'Goldman', sans-serif;
+  --font-body: "Fredoka", sans-serif;
+  --font-title: "Goldman", sans-serif;
 }
 
 body {
@@ -154,6 +154,11 @@ ul {
 
 .app-form-label {
   min-width: 10rem;
+}
+
+.app-form-label span {
+  display: block;
+  font-size: 0.8rem;
 }
 
 .app-form-input {

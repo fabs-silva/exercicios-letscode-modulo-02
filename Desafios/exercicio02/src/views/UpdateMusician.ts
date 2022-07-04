@@ -1,15 +1,17 @@
-import { getTitle } from '../utils';
+import { findByEmailButton } from "../controllers/UpdateMusicianController";
+import { getTitle, inputSingleString } from "../utils";
+import { Musician } from "./../models/Musician";
 
 export const updateMusician = (): void => {
-  const appBody = document.getElementById('app-body')!;
-  appBody.appendChild(getTitle('Modificar Músico'));
+  const appBody = document.getElementById("app-body")!;
+  appBody.appendChild(getTitle("Modificar Músico"));
   appBody.appendChild(formUpdateMusician());
-  appBody.appendChild(musicianData());
+  findByEmailButton();
 };
 
 const formUpdateMusician = () => {
-  const form = document.createElement('form') as HTMLFormElement;
-  form.classList.add('app-form-create-musician');
+  const form = document.createElement("form") as HTMLFormElement;
+  form.classList.add("app-form-create-musician");
 
   form.innerHTML = `
   <div class="app-email-form-group" id="form-group-email">
@@ -17,17 +19,16 @@ const formUpdateMusician = () => {
   <input type="email" placeholder="Buscar por email..." id="email" class="app-form-input"/>
 </div>
     <div class="app-form-button-container">
-      <button class="app-form-button" disabled>Buscar</button>
-      <button class="app-form-button">Salvar</button>
+      <button class="app-form-button">Buscar</button>
     </div>
   `;
 
   return form;
 };
 
-const musicianData = () => {
-  const divMusicianData = document.createElement('div') as HTMLDivElement;
-  divMusicianData.classList.add('app-list-search-musician');
+export const musicianData = (musician: Musician) => {
+  const divMusicianData = document.createElement("div") as HTMLDivElement;
+  divMusicianData.classList.add("app-list-search-musician");
 
   divMusicianData.innerHTML = `
   <div class="app-data">
@@ -36,8 +37,8 @@ const musicianData = () => {
   <li>Email</li>
   </ul>
   <ul class="app-data-body">
-  <li>Fabiana</li>
-  <li>fabiana@fabiana.com</li>
+  <li>${musician.name}</li>
+  <li>${musician.email}</li>
   </ul>
   </div>
   <div class="app-data-changeable">
@@ -47,8 +48,9 @@ const musicianData = () => {
         <input type="text" placeholder="Adicione" id="instrumentos" class="app-form-input"/>
     </div>
   <ul class="app-form-list" id="instruments-list">
-  <a href="#"><li>Piano <span class="delete-from-list">x</span></li></a>
-  <a href="#"><li>Teclado <span class="delete-from-list">x</span></li></a>
+  ${musician.instruments.map((inst) => {
+    return ` <a href="#"><li>${inst} <span class="delete-from-list" id=${inst} type="button">x</span></li></a>`;
+  })}
   </ul>
   </div>
   <div>
@@ -57,13 +59,19 @@ const musicianData = () => {
       <input type="text" placeholder="Escolha pelo menos um gênero" id="generos" class="app-form-input"/>
   </div>
   <ul class="app-form-list" id="genres-list">
-  <a href="#"><li>Folk <span class="delete-from-list">x</span></li></a>
-  <a href="#"><li>Pop <span class="delete-from-list">x</span></li></a>
-  <a href="#"><li>Rock <span class="delete-from-list">x</span></li></a>
+  ${musician.musicGenres.map((genre) => {
+    return ` <a href="#"><li>${genre} <span class="delete-from-list" id=${genre} type="button">x</span></li></a>`;
+  })}
   </ul>
   </div>
   </div>
   `;
 
-  return divMusicianData;
+  const appBody = document.getElementById("app-body")!;
+  appBody.appendChild(divMusicianData);
+};
+
+const addNewItemArray = (array: string[], id: string) => {
+  const item = inputSingleString(id);
+  item && array.push(item);
 };
