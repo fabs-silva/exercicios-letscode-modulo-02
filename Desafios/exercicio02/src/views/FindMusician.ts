@@ -1,15 +1,16 @@
-import { getTitle } from '../utils';
+import { findMusicianButton } from "../controllers/FindMusicianController";
+import { getTitle } from "../utils";
 
 const findMusician = () => {
-  const appBody = document.getElementById('app-body');
-  appBody?.appendChild(getTitle('Buscar Músicos'));
+  const appBody = document.getElementById("app-body");
+  appBody?.appendChild(getTitle("Buscar Músicos"));
   appBody?.appendChild(searchMusician());
-  appBody?.appendChild(musiciansList());
+  findMusicianButton();
 };
 
 const searchMusician = () => {
-  const divSearch = document.createElement('div') as HTMLDivElement;
-  divSearch.classList.add('app-form-search-musician');
+  const divSearch = document.createElement("div") as HTMLDivElement;
+  divSearch.classList.add("app-form-search-musician");
 
   divSearch.innerHTML = `
     <div class="app-search-options">
@@ -26,12 +27,12 @@ const searchMusician = () => {
     </div>
     <div class="app-search-options-group">
     <div class="app-search-form-group" id="form-group-instruments">
-        <label for="instrumentos" class="app-form-label">Instrumento(s):</label>
-        <input type="text" placeholder="Buscar por instrumento..." id="instrumentos" class="app-form-input"/>
+        <label for="instrumento" class="app-form-label">Instrumento(s):</label>
+        <input type="text" placeholder="Buscar por instrumento..." id="instrumento" class="app-form-input"/>
     </div>
     <div class="app-search-form-group" id="form-group-genres">
-        <label for="generos" class="app-form-label">Gênero(s):</label>
-        <input type="text" placeholder="Buscar por gênero..." id="generos" class="app-form-input"/>
+        <label for="genero" class="app-form-label">Gênero(s):</label>
+        <input type="text" placeholder="Buscar por gênero..." id="genero" class="app-form-input"/>
     </div>
     </div>
       <div class="app-form-button-container">
@@ -44,8 +45,8 @@ const searchMusician = () => {
 };
 
 const musiciansList = () => {
-  const divMusicianList = document.createElement('div') as HTMLDivElement;
-  divMusicianList.classList.add('app-list-search-musician');
+  const divMusicianList = document.createElement("div") as HTMLDivElement;
+  divMusicianList.classList.add("app-list-search-musician");
 
   divMusicianList.innerHTML = `
   <ul class="app-list-search-header">

@@ -1,10 +1,5 @@
-import { createMusician } from "../views/CreateMusician";
-import { findMusician } from "../views/FindMusician";
-import { updateMusician } from "../views/UpdateMusician";
-import { createBands } from "./../views/CreateBands";
-
 export const menuController = () => {
-  const pages = ["", "modificar-musico", "buscar-musicos", "formar-banda"];
+  /*  const pages = ["", "modificar-musico", "buscar-musicos", "formar-banda"];
 
   pages.forEach((page) => {
     const element = document.getElementById(page);
@@ -15,11 +10,11 @@ export const menuController = () => {
 
       console.log(appBody.childNodes);
       appBody.childNodes.forEach((node) => {
-        console.log(node);
         appBody.removeChild(node);
       });
 
-      if (page === "") {
+      console.log(appBody); */
+  /* if (page === "") {
         createMusician();
       }
       if (page === "modificar-musico") {
@@ -30,7 +25,7 @@ export const menuController = () => {
       }
       if (page === "formar-banda") {
         createBands();
-      }
+      } 
     });
-  });
+  });*/
 };
