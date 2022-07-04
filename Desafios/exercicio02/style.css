@@ -16,8 +16,8 @@
   --darker-gray: #444444;
   --red: #d62828;
   --black-alpha: rgba(0, 0, 0, 0.1);
-  --font-body: "Fredoka", sans-serif;
-  --font-title: "Goldman", sans-serif;
+  --font-body: 'Fredoka', sans-serif;
+  --font-title: 'Goldman', sans-serif;
 }
 
 body {
@@ -169,6 +169,19 @@ ul {
   border: 1px solid var(--darker-gray);
 }
 
+.app-form-radio {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 4rem;
+}
+
+.app-form-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .app-form-list {
   display: flex;
   justify-content: center;
@@ -194,7 +207,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
   gap: 1.5rem;
 }
 

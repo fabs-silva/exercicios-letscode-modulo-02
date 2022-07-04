@@ -1,7 +1,16 @@
 import { getParagraphText, getTitle } from '../utils';
 
-export const createBands = (): void => {
-  const appBody = document.getElementById('app-body')!;
-  appBody.appendChild(getTitle('Buscar Músicos'));
-  appBody.appendChild(getParagraphText('Em breve...'));
+export const createBands = (): HTMLDivElement => {
+  const appBody = document.getElementById('app-body') as HTMLDivElement;
+
+  if (appBody.hasChildNodes()) {
+    appBody.remove();
+  }
+
+  const newAppBody = document.createElement('main') as HTMLDivElement;
+  newAppBody.id = 'app-body';
+  newAppBody.appendChild(getTitle('Formar Bandas'));
+  newAppBody.appendChild(getParagraphText('Em breve...'));
+
+  return newAppBody;
 };

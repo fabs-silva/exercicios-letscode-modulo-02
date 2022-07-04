@@ -1,17 +1,29 @@
-import { findByEmailButton } from "../controllers/UpdateMusicianController";
-import { getTitle, inputSingleString } from "../utils";
-import { Musician } from "./../models/Musician";
+import { findByEmailButton } from '../controllers/UpdateMusicianController';
+import { getTitle, inputSingleString } from '../utils';
+import { Musician } from './../models/Musician';
 
-export const updateMusician = (): void => {
-  const appBody = document.getElementById("app-body")!;
-  appBody.appendChild(getTitle("Modificar Músico"));
-  appBody.appendChild(formUpdateMusician());
-  findByEmailButton();
+export const updateMusician = (): HTMLDivElement => {
+  const appBody = document.getElementById('app-body') as HTMLDivElement;
+
+  if (appBody.hasChildNodes()) {
+    appBody.remove();
+  }
+
+  const newAppBody = document.createElement('main') as HTMLDivElement;
+  newAppBody.id = 'app-body';
+  newAppBody.appendChild(getTitle('Modificar Músico'));
+  newAppBody.appendChild(formUpdateMusician());
+
+  setTimeout(() => {
+    findByEmailButton();
+  }, 1000);
+
+  return newAppBody;
 };
 
 const formUpdateMusician = () => {
-  const form = document.createElement("form") as HTMLFormElement;
-  form.classList.add("app-form-create-musician");
+  const form = document.createElement('form') as HTMLFormElement;
+  form.classList.add('app-form-create-musician');
 
   form.innerHTML = `
   <div class="app-email-form-group" id="form-group-email">
@@ -27,8 +39,8 @@ const formUpdateMusician = () => {
 };
 
 export const musicianData = (musician: Musician) => {
-  const divMusicianData = document.createElement("div") as HTMLDivElement;
-  divMusicianData.classList.add("app-list-search-musician");
+  const divMusicianData = document.createElement('div') as HTMLDivElement;
+  divMusicianData.classList.add('app-list-search-musician');
 
   divMusicianData.innerHTML = `
   <div class="app-data">
@@ -40,6 +52,24 @@ export const musicianData = (musician: Musician) => {
   <li>${musician.name}</li>
   <li>${musician.email}</li>
   </ul>
+  </div>
+  <div>
+  <div class="app-form-group" id="form-group-available">
+  <label class="app-form-label">Está disponível?</label>
+  <div class="app-form-radio">
+  <div class="app-form-radio-group">
+  <input type="radio" name="disponivel" id="disponivel" class="app-form-radio-button" value="true" required
+  ${musician.available && ['checked']}/>
+  <label for="disponivel" class="app-radio-label"></label>Sim</label>
+  </div>
+  <div class="app-form-radio-group">
+  <input type="radio" name="disponivel" id="nao-disponivel" class="app-form-radio-button" value="false" required ${
+    !musician.available && ['checked']
+  }/>
+  <label for="nao-disponivel" class="app-radio-label"></label>Não</label>
+  </div>
+  </div>
+</div>
   </div>
   <div class="app-data-changeable">
   <div>
@@ -67,7 +97,7 @@ export const musicianData = (musician: Musician) => {
   </div>
   `;
 
-  const appBody = document.getElementById("app-body")!;
+  const appBody = document.getElementById('app-body')!;
   appBody.appendChild(divMusicianData);
 };
 

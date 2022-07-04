@@ -1,7 +1,7 @@
-import { menuController } from "../controllers/MenuController";
+import { menuController } from '../controllers/MenuController';
 
 export const menu = (): void => {
-  const menuApp = document.getElementById("app-menu") as HTMLDivElement;
+  const menuApp = document.getElementById('app-menu') as HTMLDivElement;
 
   menuApp.innerHTML = `
     <div class="app-logo">♬ Logo ♬</div>

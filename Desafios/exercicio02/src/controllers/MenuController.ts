@@ -1,31 +1,33 @@
+import { createBands } from '../views/CreateBands';
+import { createMusician } from '../views/CreateMusician';
+import { findMusician } from '../views/FindMusician';
+import { updateMusician } from '../views/UpdateMusician';
+
+const routes = {
+  '/': `${createMusician().innerHTML}`,
+  '/modificar-musico': `${updateMusician().innerHTML}`,
+  '/buscar-musicos': `${findMusician().innerHTML}`,
+  '/formar-bandas': `${createBands().innerHTML}`,
+};
+
 export const menuController = () => {
-  /*  const pages = ["", "modificar-musico", "buscar-musicos", "formar-banda"];
+  window.addEventListener('popstate', (e: Event) =>
+    render(new URL(window.location.href).pathname)
+  );
+  render('/');
+};
 
-  pages.forEach((page) => {
-    const element = document.getElementById(page);
-    element?.addEventListener("click", (e: Event) => {
+const render = (path: string) => {
+  const app = document.querySelector('#app-body')!;
+  app.innerHTML = routes[path] || `<h1>404</h1>`;
+
+  document.querySelectorAll('[href^="/"]').forEach((el: Element) =>
+    el.addEventListener('click', (e: Event) => {
       e.preventDefault();
-
-      const appBody = document.getElementById("app-body")!;
-
-      console.log(appBody.childNodes);
-      appBody.childNodes.forEach((node) => {
-        appBody.removeChild(node);
-      });
-
-      console.log(appBody); */
-  /* if (page === "") {
-        createMusician();
-      }
-      if (page === "modificar-musico") {
-        updateMusician();
-      }
-      if (page === "buscar-musicos") {
-        findMusician();
-      }
-      if (page === "formar-banda") {
-        createBands();
-      } 
-    });
-  });*/
+      const target = e.target as HTMLAnchorElement;
+      const { pathname: path } = new URL(target.href);
+      window.history.pushState({ path }, path, path);
+      render(path);
+    })
+  );
 };

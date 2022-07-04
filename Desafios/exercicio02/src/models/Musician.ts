@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 
 interface MusicianContract {
   id?: string;
@@ -6,6 +6,7 @@ interface MusicianContract {
   email: string;
   musicGenres: string[];
   instruments: string[];
+  available: boolean;
 }
 export class Musician implements MusicianContract {
   public readonly id?: string;
@@ -13,12 +14,20 @@ export class Musician implements MusicianContract {
   public email: string;
   public musicGenres: string[];
   public instruments: string[];
+  public available: boolean;
 
-  constructor({ name, email, musicGenres, instruments }: MusicianContract) {
+  constructor({
+    name,
+    email,
+    musicGenres,
+    instruments,
+    available,
+  }: MusicianContract) {
     this.id = uuidv4();
     this.name = name;
     this.email = email;
     this.musicGenres = musicGenres;
     this.instruments = instruments;
+    this.available = available;
   }
 }

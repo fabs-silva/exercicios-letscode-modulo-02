@@ -1,19 +1,26 @@
-import { findByEmail, inputMultipleStrings, inputSingleString } from "../utils";
-import { Musician } from "./../models/Musician";
+import {
+  findByEmail,
+  inputBoolean,
+  inputMultipleStrings,
+  inputSingleString,
+} from '../utils';
+import { Musician } from './../models/Musician';
 import {
   getMusiciansLocalStorage,
   saveMusicianLocalStorage,
-} from "./LocalStorageController";
+} from './LocalStorageController';
 
 const addMusician = (): void => {
   let musiciansList: Musician[] = getMusiciansLocalStorage();
-  const name = inputSingleString("nome");
-  const email = inputSingleString("email");
-  const instruments = inputMultipleStrings("instrumentos");
-  const musicGenres = inputMultipleStrings("generos");
+  const name = inputSingleString('nome');
+  const email = inputSingleString('email');
+  const instruments = inputMultipleStrings('instrumentos');
+  const musicGenres = inputMultipleStrings('generos');
+  const available = inputBoolean('disponivel');
 
   if (checkEmailExists(email)) {
-    throw new Error("Email já existe na base de dados");
+    alert('Email já existe na base de dados');
+    return;
   }
 
   const musician: Musician = new Musician({
@@ -21,13 +28,14 @@ const addMusician = (): void => {
     email,
     instruments,
     musicGenres,
+    available,
   });
 
   musiciansList.push(musician);
 
   saveMusicianLocalStorage(musiciansList);
 
-  alert("Músico cadastrado com sucesso!");
+  alert('Músico cadastrado com sucesso!');
 };
 
 const checkEmailExists = (email: string): boolean => {
@@ -37,9 +45,9 @@ const checkEmailExists = (email: string): boolean => {
 };
 
 const addMusicianButton = () => {
-  const button = document.querySelector<HTMLButtonElement>(".app-form-button");
+  const button = document.querySelector<HTMLButtonElement>('.app-form-button');
 
-  button?.addEventListener("click", () => {
+  button?.addEventListener('click', () => {
     addMusician();
   });
 };

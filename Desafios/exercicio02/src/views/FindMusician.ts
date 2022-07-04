@@ -1,16 +1,29 @@
-import { findMusicianButton } from "../controllers/FindMusicianController";
-import { getTitle } from "../utils";
+import { findMusicianButton } from '../controllers/FindMusicianController';
+import { Musician } from '../models/Musician';
+import { getTitle } from '../utils';
 
-const findMusician = () => {
-  const appBody = document.getElementById("app-body");
-  appBody?.appendChild(getTitle("Buscar Músicos"));
-  appBody?.appendChild(searchMusician());
-  findMusicianButton();
+const findMusician = (): HTMLDivElement => {
+  const appBody = document.getElementById('app-body') as HTMLDivElement;
+
+  if (appBody.hasChildNodes()) {
+    appBody.remove();
+  }
+
+  const newAppBody = document.createElement('main') as HTMLDivElement;
+  newAppBody.id = 'app-body';
+  newAppBody.appendChild(getTitle('Buscar Músicos'));
+  newAppBody.appendChild(searchMusician());
+
+  setTimeout(() => {
+    findMusicianButton();
+  }, 1000);
+
+  return newAppBody;
 };
 
 const searchMusician = () => {
-  const divSearch = document.createElement("div") as HTMLDivElement;
-  divSearch.classList.add("app-form-search-musician");
+  const divSearch = document.createElement('div') as HTMLDivElement;
+  divSearch.classList.add('app-form-search-musician');
 
   divSearch.innerHTML = `
     <div class="app-search-options">
@@ -44,9 +57,9 @@ const searchMusician = () => {
   return divSearch;
 };
 
-const musiciansList = () => {
-  const divMusicianList = document.createElement("div") as HTMLDivElement;
-  divMusicianList.classList.add("app-list-search-musician");
+const musiciansList = (musicians: Musician[]) => {
+  const divMusicianList = document.createElement('div') as HTMLDivElement;
+  divMusicianList.classList.add('app-list-search-musician');
 
   divMusicianList.innerHTML = `
   <ul class="app-list-search-header">
@@ -57,17 +70,24 @@ const musiciansList = () => {
   <li>Disponível?</li>
   </ul>
   <div class="app-list-search-body">
-  <ul>
-  <li>Fabiana</li>
-  <li>fabiana@fabiana.com</li>
-  <li><span>Teclado</span> <span>Voz</span></li>
-  <li><span>Folk</span> <span>Pop</span> <span>Rock</span></li>
-  <li>Sim</li>
-  </ul>
+    ${musicians.map((mus) => {
+      return `<ul>
+    <li>${mus.name}</li>
+    <li>${mus.email}</li>
+    <li>${mus.instruments.map((ins) => {
+      return `<span>${ins}</span>`;
+    })}</li>
+    <li>${mus.musicGenres.map((genre) => {
+      return `<span>${genre}</span>`;
+    })}</li>
+    <li>${mus.available ? 'Sim' : 'Não'}</li>
+    </ul>`;
+    })}
   </div>
   `;
 
-  return divMusicianList;
+  const appBody = document.getElementById('app-body')!;
+  appBody.appendChild(divMusicianList);
 };
 
-export { findMusician };
+export { findMusician, musiciansList };
