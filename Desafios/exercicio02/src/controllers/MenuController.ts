@@ -11,12 +11,12 @@ const routes = {
 };
 
 export const menuController = () => {
-  window.addEventListener('popstate', (e: Event) =>
+  /* window.addEventListener('popstate', (e: Event) =>
     render(new URL(window.location.href).pathname)
   );
-  render('/');
+  render('/'); */
 };
-
+/* 
 const render = (path: string) => {
   const app = document.querySelector('#app-body')!;
   app.innerHTML = routes[path] || `<h1>404</h1>`;
@@ -31,3 +31,4 @@ const render = (path: string) => {
     })
   );
 };
+ */

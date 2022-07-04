@@ -238,12 +238,14 @@ ul {
   width: 50%;
 }
 
-.app-search-form-group label {
+.app-search-form-group label,
+.app-search-radio-group {
   font-size: 1rem;
 }
 
 .app-search-form-group input,
-.app-email-form-group input {
+.app-email-form-group input,
+.app-search-radio-group {
   margin-top: 0.5rem;
 }
 
@@ -293,6 +295,12 @@ ul {
   background-color: var(--white);
   padding: 0.5rem;
   font-size: 0.9rem;
+}
+
+.app-search-radio-group {
+  width: 100%;
+  display: flex;
+  margin-top: 0.5rem;
 }
 
 .app-form-list li {

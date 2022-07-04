@@ -2,23 +2,12 @@ import { findByEmailButton } from '../controllers/UpdateMusicianController';
 import { getTitle, inputSingleString } from '../utils';
 import { Musician } from './../models/Musician';
 
-export const updateMusician = (): HTMLDivElement => {
+export const updateMusician = () => {
   const appBody = document.getElementById('app-body') as HTMLDivElement;
+  appBody.appendChild(getTitle('Modificar Músico'));
+  appBody.appendChild(formUpdateMusician());
 
-  if (appBody.hasChildNodes()) {
-    appBody.remove();
-  }
-
-  const newAppBody = document.createElement('main') as HTMLDivElement;
-  newAppBody.id = 'app-body';
-  newAppBody.appendChild(getTitle('Modificar Músico'));
-  newAppBody.appendChild(formUpdateMusician());
-
-  setTimeout(() => {
-    findByEmailButton();
-  }, 1000);
-
-  return newAppBody;
+  findByEmailButton();
 };
 
 const formUpdateMusician = () => {

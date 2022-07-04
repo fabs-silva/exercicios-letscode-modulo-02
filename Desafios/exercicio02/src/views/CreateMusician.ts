@@ -3,21 +3,9 @@ import { getTitle } from '../utils';
 
 const createMusician = () => {
   const appBody = document.getElementById('app-body') as HTMLDivElement;
-
-  if (appBody.hasChildNodes()) {
-    appBody.remove();
-  }
-
-  const newAppBody = document.createElement('main') as HTMLDivElement;
-  newAppBody.id = 'app-body';
-  newAppBody.appendChild(getTitle('Cadastrar Músico'));
-  newAppBody?.appendChild(formCreateMusician());
-
-  setTimeout(() => {
-    addMusicianButton();
-  }, 1000);
-
-  return newAppBody;
+  appBody.appendChild(getTitle('Cadastrar Músico'));
+  appBody?.appendChild(formCreateMusician());
+  addMusicianButton();
 };
 
 const formCreateMusician = () => {

@@ -1,5 +1,3 @@
-import { menuController } from '../controllers/MenuController';
-
 export const menu = (): void => {
   const menuApp = document.getElementById('app-menu') as HTMLDivElement;
 
@@ -11,6 +9,4 @@ export const menu = (): void => {
         <li><a href="/buscar-musicos" id="buscar-musicos">Buscar Músicos</a></li>
         <li><a href="/formar-bandas" id="formar-bandas">Formar Bandas</a></li>
     </ul>`;
-
-  menuController();
 };
