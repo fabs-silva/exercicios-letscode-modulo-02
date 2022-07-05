@@ -1,25 +1,16 @@
-const addProductAlreadyInCart = (
-  cart: ProductCart[],
+/* const updateProductAlreadyInCart = (
   selectedProduct: ProductCart
 ): ProductCart | null => {
-  const amountSelected = checkAmountSelected(productInCart.amountLeft);
+  let cart = getProductsLocalStorage();
 
   let productInCart: ProductCart | undefined = cart.find(
     (p) => p.id === selectedProduct.id
   );
 
   if (productInCart !== undefined) {
-    const newAmountSelected = productInCart.amountSelected + amountSelected;
+    const updatedProduct = setAmountSelected(selectedProduct);
 
-    if (newAmountSelected > selectedProduct.amountLeft) {
-      throw new Error('Quantidade maior do que a disponível em estoque');
-    }
-
-    return {
-      ...productInCart,
-      amountSelected: newAmountSelected,
-      total: newAmountSelected * productInCart.price,
-    };
+    return updatedProduct;
   }
 
   return null;
@@ -56,3 +47,4 @@ const addProductToCart = (selectedProduct: ProductCart): void => {
 
   saveProductLocalStorage(cart);
 };
+ */

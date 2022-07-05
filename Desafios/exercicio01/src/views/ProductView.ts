@@ -1,9 +1,6 @@
-import {
-  buttonBuyProduct,
-  getProductElement,
-} from '../controllers/ProductListController';
+import { buttonBuyProduct } from '../controllers/ProductListController';
 import { ProductCart } from '../models/Product';
-import { amountLeftText, getProductImage, productPriceReais } from '../utils';
+import { getProductImage, productPriceReais } from '../utils';
 
 const renderProductMain = (product: ProductCart): HTMLParagraphElement => {
   const productItem = document.createElement('div');
@@ -16,9 +13,6 @@ const renderProductMain = (product: ProductCart): HTMLParagraphElement => {
         <a href="#">${product.name}</a>
         <div class="product-info">
           <p class="product-price">${productPriceReais(product.price)}</p>
-          <p class="product-amount-left">${amountLeftText(
-            product.amountLeft
-          )}</p>
         </div>
       </div>
       <button class="product-button" id="product-button-${product.id}">
@@ -40,22 +34,4 @@ const renderProductsListMain = (
   });
 };
 
-const updateAmountLeft = (
-  amountSelected: number,
-  selectedProduct: ProductCart
-): void => {
-  selectedProduct.amountLeft -= amountSelected;
-
-  const productElement = getProductElement(selectedProduct.id);
-
-  if (productElement) {
-    const amountLeftElement = productElement.querySelector(
-      '.product-amount-left'
-    ) as HTMLParagraphElement;
-    amountLeftElement.innerHTML = `${amountLeftText(
-      selectedProduct.amountLeft
-    )}`;
-  }
-};
-
-export { renderProductsListMain, updateAmountLeft };
+export { renderProductsListMain };

@@ -1,3 +1,4 @@
+import { buyItems } from '../controllers/CartController';
 import {
   getProductsLocalStorage,
   removeProductLocalStorage,
@@ -27,9 +28,11 @@ const renderProductCart = (product: ProductCart): HTMLDivElement => {
           <p class="cart-product-total-price">Total: ${productPriceReais(
             product.total
           )}</p>
+          <div>
           <button class="cart-delete-product" id="delete-button-${product.id}">
             <i class="fa-solid fa-trash-can"></i>
           </button>
+          </div>
         </div>
       </div>
     </div>`;
@@ -38,12 +41,27 @@ const renderProductCart = (product: ProductCart): HTMLDivElement => {
 
 const renderProductsListCart = (list: HTMLDivElement): void => {
   const products = getProductsLocalStorage();
+  let totalPrice = 0;
   products.length > 0 &&
     products.forEach((product) => {
       const productItem = renderProductCart(product);
       list.append(productItem);
       removeFromCartButton(product.id);
+      totalPrice += product.total;
     });
+  renderTotalPrice(totalPrice);
+  buyItems();
+};
+
+const renderTotalPrice = (total: number) => {
+  const totalPriceItem = document.querySelector(
+    '.cart-total-price'
+  ) as HTMLDivElement;
+  totalPriceItem.innerText = 'Total:';
+
+  const totalPriceValue = document.createElement('span') as HTMLSpanElement;
+  totalPriceValue.innerText = productPriceReais(total);
+  totalPriceItem.appendChild(totalPriceValue);
 };
 
 const removeFromCartButton = (id: number): void => {
@@ -60,7 +78,18 @@ const removeFromCartButton = (id: number): void => {
 
     const cartHtml = document.querySelector('.cart-body') as HTMLDivElement;
     cartHtml.removeChild(removedItem);
+
+    const cart = getProductsLocalStorage();
+
+    const updatedTotal = cart.reduce((acc, item) => acc + item.total, 0);
+
+    renderTotalPrice(updatedTotal);
   });
 };
 
-export { renderProductCart, renderProductsListCart, removeFromCartButton };
+export {
+  renderProductCart,
+  renderProductsListCart,
+  removeFromCartButton,
+  renderTotalPrice,
+};

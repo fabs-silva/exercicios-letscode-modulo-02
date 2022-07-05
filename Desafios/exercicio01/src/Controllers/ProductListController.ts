@@ -10,7 +10,6 @@ const createListProducts = (products: Product[]): ProductCart[] => {
       name: product.name,
       price: product.price,
       image: product.image,
-      amountLeft: product.amountLeft,
       amountSelected: 0,
     });
     productsList = [...productsList, productCartItem];

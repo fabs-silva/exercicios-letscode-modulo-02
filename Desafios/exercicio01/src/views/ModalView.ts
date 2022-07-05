@@ -3,7 +3,7 @@ import {
   buttonCancelPurchase,
 } from '../controllers/ModalController';
 import { ProductCart } from '../models/Product';
-import { amountLeftText, getProductImage, productPriceReais } from '../utils';
+import { getProductImage, productPriceReais } from '../utils';
 
 const renderProductModal = (selectedProduct: ProductCart): HTMLDivElement => {
   const product = document.createElement('div');
@@ -16,9 +16,6 @@ const renderProductModal = (selectedProduct: ProductCart): HTMLDivElement => {
             <div class="modal-product-extra-info">
               <p class="modal-product-price">${productPriceReais(
                 selectedProduct.price
-              )}</p>
-              <p class="modal-product-amount">${amountLeftText(
-                selectedProduct.amountLeft
               )}</p>
             </div>
             </div>

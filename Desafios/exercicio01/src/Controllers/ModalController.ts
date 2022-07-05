@@ -1,6 +1,7 @@
 import { ProductCart } from '../models/Product';
-import { checkAmountSelected, getInputValue } from '../utils';
+import { getInputValue } from '../utils';
 import { closeModal } from '../views/ModalView';
+import { addProductToCart } from './CartController';
 
 const buttonCancelPurchase = (): void => {
   const button = document.querySelector<HTMLButtonElement>(
@@ -13,18 +14,11 @@ const buttonCancelPurchase = (): void => {
 const setAmountSelected = (
   selectedProduct: ProductCart
 ): ProductCart | undefined => {
-  const amountSelectedInput = parseInt(getInputValue('amount-item-modal'));
+  const amountSelected = parseInt(getInputValue('amount-item-modal'));
 
-  const amountSelected = checkAmountSelected(
-    amountSelectedInput,
-    selectedProduct.amountLeft
-  );
-
-  if (!amountSelected) {
-    return;
-  }
-
-  selectedProduct.amountSelected += amountSelected;
+  const newAmount = selectedProduct.amountSelected + amountSelected;
+  selectedProduct.amountSelected = newAmount;
+  selectedProduct.total = newAmount * selectedProduct.price;
 
   return selectedProduct;
 };
@@ -34,8 +28,9 @@ const buttonAddToCart = (selectedProduct: ProductCart): void => {
   const button = document.querySelector<HTMLButtonElement>('.modal-button-add');
   button?.addEventListener('click', () => {
     const productNewAmount = setAmountSelected(selectedProduct);
+
     if (productNewAmount) {
-      //addProductToCart(productNewAmount);
+      addProductToCart(productNewAmount);
       closeModal();
     }
   });
