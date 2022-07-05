@@ -1,9 +1,9 @@
-import text from '../usernames.txt?raw';
+import text from "../usernames.txt?raw";
 
-const textArray = text.toString().replace(/\r\n/g, '\n').split('\n');
+const textArray = text.toString().replace(/\r\n/g, "\n").split("\n");
 
 const newTextArray = textArray.filter((str) => {
-  return str.length === 8 && str[2] === 'o' && str[5] === 'd';
+  return str.length === 15 && str[5] === "d" && str[8] === "a";
 });
 console.log(newTextArray);
 
@@ -13,22 +13,27 @@ const promiseArray: Promise<Response>[] = newTextArray.map((str) => {
       `https://api.github.com/users/${str}`
     ).then((response) => response.json());
 
-    response ? resolve(response) : reject('not found');
+    if (JSON.stringify(response) === "{}") {
+      reject(str);
+    }
+
+    resolve(response);
   });
 });
 
 Promise.allSettled(promiseArray).then((results) => {
   let notExistant: string[] = [];
-  let existant: string[] = [];
+
   results.forEach((result) => {
-    if (result.value.name === null || result.value.name === undefined) {
-      notExistant = [...notExistant, result.value];
+    if (result.status === "rejected") {
+      notExistant = [...notExistant, result.reason];
     }
-    existant = [...existant, result.value.name];
   });
+
+  if (notExistant == []) {
+    console.log("Todos os usuários foram encontrados");
+  }
+
   console.log(`Usuários que não existem:
-  ${notExistant}
-  
-  Usuários que existem:
-  ${existant}`);
+  ${notExistant}`);
 });
