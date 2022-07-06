@@ -1,8 +1,33 @@
-import './style.css'
+import { Pokemon } from './models/Pokemon';
+import './style.css';
+import { gettingApiPromise, randomNumbers } from './utils';
 
-const app = document.querySelector<HTMLDivElement>('#app')!
+const gettingListPokemons = (arrayNumbers: number[]) => {
+  const apiPromise = gettingApiPromise(
+    `${import.meta.env.VITE_BASE_URL}pokemon_types.json`
+  );
+  apiPromise.then((response) => {
+    let pokemonArray: Pokemon[] = [];
 
-app.innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+    for (let number of arrayNumbers) {
+      const pokemon: Pokemon = Array.from(response).find(
+        (p) => p.pokemon_id === number
+      );
+
+      pokemonArray = [...pokemonArray, pokemon];
+    }
+
+    return pokemonArray;
+  });
+};
+
+const gettingTypeEffectiveness = () => {
+  const apiPromise = gettingApiPromise(
+    `${import.meta.env.VITE_BASE_URL}type_effectiveness.json`
+  );
+  apiPromise.then((response) => {
+    return response;
+  });
+};
+
+console.log(gettingListPokemons(randomNumbers(10)));

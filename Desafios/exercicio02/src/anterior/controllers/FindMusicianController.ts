@@ -1,5 +1,5 @@
 import { inputSingleString, sanitizeText } from '../utils';
-import { getMusiciansLocalStorage } from './LocalStorageController';
+import { getMusiciansLocalStorage } from '../../utils/LocalStorage';
 
 const findByName = (name: string) => {
   const musiciansList = getMusiciansLocalStorage();

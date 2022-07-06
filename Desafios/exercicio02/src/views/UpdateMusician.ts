@@ -1,8 +1,8 @@
 import { findByEmailButton } from '../controllers/UpdateMusicianController';
-import { getTitle, inputSingleString } from '../utils';
-import { Musician } from './../models/Musician';
+import { Musician } from '../models/Musician';
+import { getTitle } from '../utils/General';
 
-export const updateMusician = () => {
+const updateMusician = () => {
   const appBody = document.getElementById('app-body') as HTMLDivElement;
   appBody.appendChild(getTitle('Modificar Músico'));
   appBody.appendChild(formUpdateMusician());
@@ -12,13 +12,13 @@ export const updateMusician = () => {
 
 const formUpdateMusician = () => {
   const form = document.createElement('form') as HTMLFormElement;
-  form.classList.add('app-form-create-musician');
+  form.classList.add('app-form');
 
   form.innerHTML = `
-  <div class="app-email-form-group" id="form-group-email">
+  <fieldset class="app-form-group" id="form-group-email">
   <label for="email" class="app-form-label">Email do músico:</label>
   <input type="email" placeholder="Buscar por email..." id="email" class="app-form-input"/>
-</div>
+</fieldset>
     <div class="app-form-button-container">
       <button class="app-form-button">Buscar</button>
     </div>
@@ -27,62 +27,34 @@ const formUpdateMusician = () => {
   return form;
 };
 
-export const musicianData = (musician: Musician) => {
+const musicianData = (musician: Musician) => {
   const divMusicianData = document.createElement('div') as HTMLDivElement;
-  divMusicianData.classList.add('app-list-search-musician');
+  divMusicianData.classList.add('app-update-musician');
 
   divMusicianData.innerHTML = `
-  <div class="app-data">
-  <ul class="app-data-header">
+  <ul class="app-update-musician-header">
   <li>Nome</li>
   <li>Email</li>
+  <li>Instrumento(s)</li>
+  <li>Gênero(s)</li>
+  <li>Disponível?</li>
   </ul>
-  <ul class="app-data-body">
-  <li>${musician.name}</li>
-  <li>${musician.email}</li>
-  </ul>
-  </div>
-  <div>
-  <div class="app-form-group" id="form-group-available">
-  <label class="app-form-label">Está disponível?</label>
-  <div class="app-form-radio">
-  <div class="app-form-radio-group">
-  <input type="radio" name="disponivel" id="disponivel" class="app-form-radio-button" value="true" required
-  ${musician.available && ['checked']}/>
-  <label for="disponivel" class="app-radio-label"></label>Sim</label>
-  </div>
-  <div class="app-form-radio-group">
-  <input type="radio" name="disponivel" id="nao-disponivel" class="app-form-radio-button" value="false" required ${
-    !musician.available && ['checked']
-  }/>
-  <label for="nao-disponivel" class="app-radio-label"></label>Não</label>
-  </div>
-  </div>
-</div>
-  </div>
-  <div class="app-data-changeable">
-  <div>
-  <div class="app-form-group" id="form-group-instruments">
-        <label for="instrumentos" class="app-form-label">Instrumento(s):</label>
-        <input type="text" placeholder="Adicione" id="instrumentos" class="app-form-input"/>
-    </div>
-  <ul class="app-form-list" id="instruments-list">
-  ${musician.instruments.map((inst) => {
-    return ` <a href="#"><li>${inst} <span class="delete-from-list" id=${inst} type="button">x</span></li></a>`;
-  })}
-  </ul>
-  </div>
-  <div>
-  <div class="app-form-group" id="form-group-genres">
-      <label for="generos" class="app-form-label">Gênero(s):</label>
-      <input type="text" placeholder="Escolha pelo menos um gênero" id="generos" class="app-form-input"/>
-  </div>
-  <ul class="app-form-list" id="genres-list">
-  ${musician.musicGenres.map((genre) => {
-    return ` <a href="#"><li>${genre} <span class="delete-from-list" id=${genre} type="button">x</span></li></a>`;
-  })}
-  </ul>
-  </div>
+  <div class="app-update-musician-body">
+<ul>
+    <li>${musician.name}</li>
+    <li>${musician.email}</li>
+    <li>${musician.instruments
+      .map((ins) => {
+        return `<span>${ins}</span>`;
+      })
+      .join('/ ')}</li>
+    <li>${musician.musicGenres
+      .map((genre) => {
+        return `<span>${genre}</span>`;
+      })
+      .join('/ ')}</li>
+    <li>${musician.available ? 'sim' : 'não'}</li>
+    </ul>
   </div>
   `;
 
@@ -90,7 +62,10 @@ export const musicianData = (musician: Musician) => {
   appBody.appendChild(divMusicianData);
 };
 
-const addNewItemArray = (array: string[], id: string) => {
+/*const addNewItemArray = (array: string[], id: string) => {
   const item = inputSingleString(id);
   item && array.push(item);
 };
+ */
+
+export { musicianData, updateMusician };

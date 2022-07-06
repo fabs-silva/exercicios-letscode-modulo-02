@@ -1,14 +1,14 @@
+import { Musician } from '../models/Musician';
 import {
-  findByEmail,
   inputBoolean,
   inputMultipleStrings,
   inputSingleString,
-} from '../utils';
-import { Musician } from './../models/Musician';
+} from '../utils/Inputs';
 import {
   getMusiciansLocalStorage,
   saveMusicianLocalStorage,
-} from './LocalStorageController';
+} from '../utils/LocalStorage';
+import { findByEmail } from './FindMusicians';
 
 const addMusician = (): void => {
   let musiciansList: Musician[] = getMusiciansLocalStorage();
@@ -36,6 +36,7 @@ const addMusician = (): void => {
   saveMusicianLocalStorage(musiciansList);
 
   alert('Músico cadastrado com sucesso!');
+  console.log(musician);
 };
 
 const checkEmailExists = (email: string): boolean => {
