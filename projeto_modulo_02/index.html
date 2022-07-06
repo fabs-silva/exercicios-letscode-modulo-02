@@ -7,7 +7,27 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1 class="app-title">Pokemon Cards' Battle</h1>
+      <main class="app-body">
+        <div id="player1" class="app-player">
+          <div class="app-player-name"></div>
+          <div class="app-player-cards">
+            <div class="app-player-cards-left"></div>
+            <div class="app-player-main-card"></div>
+          </div>
+          <div class="app-player-game-info">
+            <div class="app-player-cards-left"></div>
+            <div class="app-player-points"></div>
+            <div class="app-player-cards-used"></div>
+          </div>
+        </div>
+        <div id="player2" class="app-player"></div>
+      </main>
+      <footer class="app-footer">
+        <p>Letscode Dynamic FrontEnd Module Project - Using Pokemon API</p>
+      </footer>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
