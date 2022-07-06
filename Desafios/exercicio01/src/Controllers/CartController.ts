@@ -1,15 +1,15 @@
-import { ProductCart } from '../models/Product';
-import { productPriceReais } from '../utils';
+import { ProductCart } from "../models/Product";
+import { productPriceReais } from "../utils";
 import {
   removeFromCartButton,
   renderProductCart,
   renderTotalPrice,
-} from '../views/CartView';
+} from "../views/CartView";
 import {
   cleanLocalStorage,
   getProductsLocalStorage,
   saveProductLocalStorage,
-} from './LocalStorageController';
+} from "./LocalStorageController";
 
 const updateProductAlreadyInCart = (
   selectedProduct: ProductCart
@@ -29,7 +29,7 @@ const updateProductAlreadyInCart = (
 const addProductToCart = (selectedProduct: ProductCart): void => {
   const productAlreadyInCart = updateProductAlreadyInCart(selectedProduct);
 
-  const cartHtml = document.querySelector('.cart-body') as HTMLDivElement;
+  const cartHtml = document.querySelector(".cart-body") as HTMLDivElement;
   let cart = getProductsLocalStorage();
 
   if (productAlreadyInCart) {
@@ -46,18 +46,18 @@ const addProductToCart = (selectedProduct: ProductCart): void => {
   const newItem = renderProductCart(selectedProduct);
   cartHtml.appendChild(newItem);
   saveProductLocalStorage(cart);
-  removeFromCartButton(selectedProduct.id);
+  removeFromCartButton(selectedProduct);
   const updatedTotal = cart.reduce((acc, item) => acc + item.total, 0);
 
   renderTotalPrice(updatedTotal);
 };
 
 const buyItems = () => {
-  const button = document.querySelector('.cart-button') as HTMLButtonElement;
-  button.addEventListener('click', () => {
+  const button = document.querySelector(".cart-button") as HTMLButtonElement;
+  button.addEventListener("click", () => {
     const cart = getProductsLocalStorage();
     if (cart.length <= 0) {
-      alert('Seu carrinho está vazio.');
+      alert("Seu carrinho está vazio.");
       return;
     }
 
@@ -104,7 +104,7 @@ const buyItems = () => {
     }
 
     alert(
-      'Compra realizada com sucesso. A entrega acontecerá entre 5 e 10 dias úteis.'
+      "Compra realizada com sucesso. A entrega acontecerá entre 5 e 10 dias úteis."
     );
 
     cleanLocalStorage();

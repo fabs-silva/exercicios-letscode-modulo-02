@@ -1,16 +1,16 @@
-import { buyItems } from '../controllers/CartController';
+import { buyItems } from "../controllers/CartController";
 import {
   getProductsLocalStorage,
   removeProductLocalStorage,
-} from '../controllers/LocalStorageController';
-import { ProductCart } from '../models/Product';
-import { getProductImage, productPriceReais } from '../utils';
+} from "../controllers/LocalStorageController";
+import { ProductCart } from "../models/Product";
+import { getProductImage, productPriceReais } from "../utils";
 
 const renderProductCart = (product: ProductCart): HTMLDivElement => {
   const productImage = getProductImage(product);
 
-  const itemProduct = document.createElement('div');
-  itemProduct.classList.add('cart-product-item');
+  const itemProduct = document.createElement("div");
+  itemProduct.classList.add("cart-product-item");
   itemProduct.id = `cart-product-item-${product.id}`;
 
   itemProduct.innerHTML = `
@@ -46,7 +46,7 @@ const renderProductsListCart = (list: HTMLDivElement): void => {
     products.forEach((product) => {
       const productItem = renderProductCart(product);
       list.append(productItem);
-      removeFromCartButton(product.id);
+      removeFromCartButton(product);
       totalPrice += product.total;
     });
   renderTotalPrice(totalPrice);
@@ -55,29 +55,31 @@ const renderProductsListCart = (list: HTMLDivElement): void => {
 
 const renderTotalPrice = (total: number) => {
   const totalPriceItem = document.querySelector(
-    '.cart-total-price'
+    ".cart-total-price"
   ) as HTMLDivElement;
-  totalPriceItem.innerText = 'Total:';
+  totalPriceItem.innerText = "Total:";
 
-  const totalPriceValue = document.createElement('span') as HTMLSpanElement;
+  const totalPriceValue = document.createElement("span") as HTMLSpanElement;
   totalPriceValue.innerText = productPriceReais(total);
   totalPriceItem.appendChild(totalPriceValue);
 };
 
-const removeFromCartButton = (id: number): void => {
+const removeFromCartButton = (selectedProduct: ProductCart): void => {
   const button = document.getElementById(
-    `delete-button-${id}`
+    `delete-button-${selectedProduct.id}`
   ) as HTMLButtonElement;
 
   const removedItem = document.getElementById(
-    `cart-product-item-${id}`
+    `cart-product-item-${selectedProduct.id}`
   ) as HTMLDivElement;
 
-  button?.addEventListener('click', () => {
-    removeProductLocalStorage(id);
+  button?.addEventListener("click", () => {
+    removeProductLocalStorage(selectedProduct.id);
 
-    const cartHtml = document.querySelector('.cart-body') as HTMLDivElement;
+    const cartHtml = document.querySelector(".cart-body") as HTMLDivElement;
     cartHtml.removeChild(removedItem);
+    selectedProduct.amountSelected = 0;
+    selectedProduct.total = 0;
 
     const cart = getProductsLocalStorage();
 

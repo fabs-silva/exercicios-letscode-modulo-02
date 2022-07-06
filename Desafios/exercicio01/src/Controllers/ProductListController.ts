@@ -1,5 +1,5 @@
-import { Product, ProductCart } from '../models/Product';
-import { showModal } from '../views/ModalView';
+import { Product, ProductCart } from "../models/Product";
+import { showModal } from "../views/ModalView";
 
 const createListProducts = (products: Product[]): ProductCart[] => {
   let productsList: ProductCart[] = [];
@@ -11,6 +11,7 @@ const createListProducts = (products: Product[]): ProductCart[] => {
       price: product.price,
       image: product.image,
       amountSelected: 0,
+      total: 0,
     });
     productsList = [...productsList, productCartItem];
   });
@@ -23,7 +24,7 @@ const buttonBuyProduct = (selectedProduct: ProductCart): void => {
     `product-button-${selectedProduct.id}`
   ) as HTMLButtonElement;
 
-  buttonBuyProduct.addEventListener('click', () => {
+  buttonBuyProduct.addEventListener("click", () => {
     showModal(selectedProduct);
   });
 };
