@@ -1,11 +1,12 @@
 import { addMusicianButton } from '../controllers/CreateMusicianController';
+import { Musician } from '../models/Musician';
 import { getTitle } from '../utils/General';
 
-const createMusician = () => {
+const createMusician = (musicians: Musician[]) => {
   const appBody = document.getElementById('app-body') as HTMLDivElement;
   appBody.appendChild(getTitle('Cadastrar Músico'));
   appBody?.appendChild(formCreateMusician());
-  addMusicianButton();
+  addMusicianButton(musicians);
 };
 
 const formCreateMusician = () => {

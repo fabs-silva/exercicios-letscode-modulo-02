@@ -1,12 +1,13 @@
+import { findMusiciansButton } from '../controllers/FindMusiciansController';
 import { Musician } from '../models/Musician';
 import { getTitle } from '../utils/General';
 
-const findMusicians = () => {
+const findMusicians = (musicians: Musician[]) => {
   const appBody = document.getElementById('app-body') as HTMLDivElement;
   appBody.appendChild(getTitle('Buscar Músicos'));
   appBody.appendChild(formFindMusicians());
 
-  //findMusiciansButton();
+  findMusiciansButton(musicians);
 };
 
 const formFindMusicians = () => {
@@ -17,36 +18,23 @@ const formFindMusicians = () => {
       <legend>Buscar por:</legend>
       <div class="app-find-by-inputs-group">
         <fieldset class="app-find-by-group" id="form-group-name">
-          <label for="nome"><input type="checkbox" value="buscar-nome"/> Nome:</label>
-          <input type="text" placeholder="Buscar por nome..." id="nome" class="app-form-input"/>
+          <label for="nome"><input type="checkbox" value="buscar-nome" id="find-name"/> Nome:</label>
+          <input type="text" placeholder="Buscar por nome..." id="name" class="app-form-input"/>
       </fieldset>
         <fieldset class="app-find-by-group" id="form-group-email">
-            <label for="email"><input type="checkbox" value="buscar-email"/> Email do músico:</label>
+            <label for="email"><input type="checkbox" value="buscar-email" id="find-email"/> Email do músico:</label>
             <input type="email" placeholder="Buscar por email..." id="email" class="app-form-input"/>
         </fieldset>
       </div>
       <div class="app-find-by-inputs-group">
         <fieldset class="app-find-by-group" id="form-group-instruments">
-            <label for="instrumento"><input type="checkbox" value="buscar-instrumento"/> Instrumento:</label>
-            <input type="text" placeholder="Buscar por instrumento..." id="instrumento" class="app-form-input"/>
+            <label for="instrumento"><input type="checkbox" value="buscar-instrumento" id="find-instruments"/> Instrumento:</label>
+            <input type="text" placeholder="Buscar por instrumento..." id="instruments" class="app-form-input"/>
         </fieldset>
         <fieldset class="app-find-by-group" id="form-group-genres">
-            <label for="genero"><input type="checkbox" value="buscar-genero"/> Gênero:</label>
-            <input type="text" placeholder="Buscar por gênero..." id="genero" class="app-form-input"/>
+            <label for="genero"><input type="checkbox" value="buscar-genero" id="find-musicGenres"/> Gênero:</label>
+            <input type="text" placeholder="Buscar por gênero..." id="musicGenres" class="app-form-input"/>
         </fieldset>
-      </div>
-        <div class="app-find-by-inputs-group" id="form-group-available">
-          <label class="app-form-label"><input type="checkbox" value="buscar-disponivel"/> Está disponível?</label>
-          <div class="app-form-radio">
-            <fieldset class="app-form-radio-option">
-              <input type="radio" name="disponivel" id="disponivel" value="true" required/>
-              <label for="disponivel" class="app-radio-label">Sim</label>
-            </fieldset>
-            <fieldset class="app-form-radio-option">
-              <input type="radio" name="disponivel" id="nao-disponivel" value="false" required/>
-              <label for="nao-disponivel" class="app-radio-label">Não</label>
-            </fieldset>
-          </div>
         </div>
       <div class="app-form-button-container">
         <button class="app-form-button">Buscar</button>
@@ -57,6 +45,13 @@ const formFindMusicians = () => {
 };
 
 const musiciansList = (musicians: Musician[]) => {
+  const searchResults = document.querySelector('.app-search-results');
+
+  const appBody = document.getElementById('app-body')!;
+  if (searchResults) {
+    appBody.removeChild(searchResults);
+  }
+
   const divMusicianList = document.createElement('div') as HTMLDivElement;
   divMusicianList.classList.add('app-search-results');
 
@@ -91,7 +86,6 @@ const musiciansList = (musicians: Musician[]) => {
   </div>
   `;
 
-  const appBody = document.getElementById('app-body')!;
   appBody.appendChild(divMusicianList);
 };
 

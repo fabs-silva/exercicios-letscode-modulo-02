@@ -18,7 +18,7 @@ const getParagraphText = (text: string, pClass?: string) => {
 const sanitizeText = (text: string) => {
   const sanitizedText = text.normalize('NFD').replace(/\p{Diacritic}/gu, '');
 
-  return sanitizedText.trim();
+  return sanitizedText.toLowerCase().trim();
 };
 
 export { getTitle, getParagraphText, sanitizeText };

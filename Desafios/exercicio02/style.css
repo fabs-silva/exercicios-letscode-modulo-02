@@ -219,9 +219,13 @@ input[type='radio'] {
   align-items: center;
 }
 
-.app-search-results-header {
+.app-search-results-header,
+.app-update-musician-header {
   font-weight: 400;
   color: var(--lighter-blue);
+}
+
+.app-search-results-header {
   margin-bottom: 0.75rem;
 }
 
@@ -248,9 +252,38 @@ input[type='radio'] {
 }
 
 .app-update-musician {
-  display: flex;
+  display: grid;
   justify-content: center;
-  gap: 0.75rem;
+  grid-template-columns: 10rem auto;
+  gap: 2rem;
+}
+
+.app-update-musician-header,
+.app-update-musician-body ul {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.app-update-musician-changeable {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.app-update-musician-body p {
+  padding: 0.5rem;
+  border: 1px solid var(--dark-gray);
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.app-update-musician-body span {
+  margin-top: -9px;
+  margin-left: 5px;
+  font-size: 1rem;
 }
 
 /* .app-form-list {
@@ -272,12 +305,6 @@ input[type='radio'] {
   padding: 0.75rem;
   font-size: 1rem;
 }
-
-
-
-
-
-
 
 .app-form-list li {
   display: flex;

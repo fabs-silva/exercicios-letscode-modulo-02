@@ -2,12 +2,12 @@ import { findByEmailButton } from '../controllers/UpdateMusicianController';
 import { Musician } from '../models/Musician';
 import { getTitle } from '../utils/General';
 
-const updateMusician = () => {
+const updateMusician = (musicians: Musician[]) => {
   const appBody = document.getElementById('app-body') as HTMLDivElement;
   appBody.appendChild(getTitle('Modificar Músico'));
   appBody.appendChild(formUpdateMusician());
 
-  findByEmailButton();
+  findByEmailButton(musicians);
 };
 
 const formUpdateMusician = () => {
@@ -43,16 +43,22 @@ const musicianData = (musician: Musician) => {
 <ul>
     <li>${musician.name}</li>
     <li>${musician.email}</li>
-    <li>${musician.instruments
+    <li class="app-update-musician-changeable">${musician.instruments
       .map((ins) => {
-        return `<span>${ins}</span>`;
+        return `<p>${ins}<span>x</span></p>`;
       })
-      .join('/ ')}</li>
-    <li>${musician.musicGenres
+      .join('')}
+      <input type="text"placeholder="Buscar por email..." id="instrumentos" class="app-form-input" />
+      </li>
+    <li class="app-update-musician-changeable">
+    <div>${musician.musicGenres
       .map((genre) => {
-        return `<span>${genre}</span>`;
+        return `<p>${genre}<span>x</span></p>`;
       })
-      .join('/ ')}</li>
+      .join('')}
+      </div>
+      <input type="text" placeholder="Buscar por email..." id="generos" class="app-form-input"/>
+      </li>
     <li>${musician.available ? 'sim' : 'não'}</li>
     </ul>
   </div>

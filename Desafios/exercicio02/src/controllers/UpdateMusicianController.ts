@@ -1,23 +1,21 @@
-import { inputSingleString } from '../utils/Inputs';
+import { Musician } from '../models/Musician';
 import { musicianData } from '../views/UpdateMusician';
-import { findByEmail } from './FindMusicians';
+import { findBySingleInput } from './FindMusiciansController';
 
-const updateMusicianData = () => {
-  const email = inputSingleString('email');
-  const musician = findByEmail(email);
+const updateMusicianData = (musicians: Musician[]) => {
+  const musician = findBySingleInput('email', musicians);
   if (!musician) {
     throw new Error('Email não encontrado');
   }
-  musicianData(musician);
-  console.log(musician);
+  musicianData(musician[0]);
 };
 
-const findByEmailButton = () => {
+const findByEmailButton = (musicians: Musician[]) => {
   const button = document.querySelector<HTMLButtonElement>('.app-form-button');
 
   button?.addEventListener('click', (e: Event) => {
     e.preventDefault();
-    updateMusicianData();
+    updateMusicianData(musicians);
   });
 };
 
