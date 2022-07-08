@@ -1,25 +1,38 @@
-import { findByEmailButton } from '../controllers/UpdateMusicianController';
-import { Musician } from '../models/Musician';
-import { getTitle } from '../utils/General';
+import { findByEmailButton } from "../controllers/UpdateMusicianController";
+import { Musician } from "../models/Musician";
+import { getTitle } from "../utils/General";
 
 const updateMusician = (musicians: Musician[]) => {
-  const appBody = document.getElementById('app-body') as HTMLDivElement;
-  appBody.appendChild(getTitle('Modificar Músico'));
+  const appBody = document.getElementById("app-body") as HTMLDivElement;
+  appBody.appendChild(getTitle("Modificar Músico"));
   appBody.appendChild(formUpdateMusician());
 
   findByEmailButton(musicians);
 };
 
 const formUpdateMusician = () => {
-  const form = document.createElement('form') as HTMLFormElement;
-  form.classList.add('app-form');
+  const form = document.createElement("form") as HTMLFormElement;
+  form.classList.add("app-form");
 
   form.innerHTML = `
-  <fieldset class="app-form-group" id="form-group-email">
-  <label for="email" class="app-form-label">Email do músico:</label>
-  <input type="email" placeholder="Buscar por email..." id="email" class="app-form-input"/>
-</fieldset>
-    <div class="app-form-button-container">
+   <legend>Digite o email para buscar um músico:</legend>
+   <fieldset class="app-form-group" id="form-group-email">
+        <label for="email" class="app-form-label">Email do músico:</label>
+        <input type="email" placeholder="Email" id="email" class="app-form-input" required/>
+    </fieldset>
+  <fieldset class="app-form-group" id="form-group-name">
+        <label for="nome" class="app-form-label">Nome do músico:</label>
+        <input type="text" placeholder="Nome" id="nome" class="app-form-input" disabled/>
+    </fieldset>
+    <fieldset class="app-form-group" id="form-group-instruments">
+        <label for="instrumentos" class="app-form-label">Instrumento(s):<span>* Separados por vírgula</span></label>
+        <input type="text" placeholder="Escolha pelo menos 1 instrumento" id="instrumentos" class="app-form-input" disabled/>
+    </fieldset>
+    <fieldset class="app-form-group" id="form-group-genres">
+        <label for="generos" class="app-form-label">Gênero(s):<span>* Separados por vírgula</span></label>
+        <input type="text" placeholder="Escolha pelo menos um gênero" id="generos" class="app-form-input" disabled/>
+    </fieldset>
+    <div class="app-form-button-container" id="form-button">
       <button class="app-form-button">Buscar</button>
     </div>
   `;
@@ -27,51 +40,43 @@ const formUpdateMusician = () => {
   return form;
 };
 
+const getArrayElements = (arrayItems: string[], id: string) => {
+  const divArray = document.createElement("div") as HTMLDivElement;
+  divArray.classList.add("app-update-musician-array");
+
+  divArray.innerHTML = `<ul>
+   <li class="app-update-musician-changeable">${arrayItems
+     .map((item) => {
+       return `<p>${item}<span>x</span></p>`;
+     })
+     .join("")}
+     </ul>`;
+
+  const form = document.querySelector(".app-form") as HTMLFormElement;
+  const fieldsetArray = document.getElementById(id) as HTMLElement;
+  form.insertBefore(divArray, fieldsetArray);
+};
+
 const musicianData = (musician: Musician) => {
-  const divMusicianData = document.createElement('div') as HTMLDivElement;
-  divMusicianData.classList.add('app-update-musician');
-
-  divMusicianData.innerHTML = `
-  <ul class="app-update-musician-header">
-  <li>Nome</li>
-  <li>Email</li>
-  <li>Instrumento(s)</li>
-  <li>Gênero(s)</li>
-  <li>Disponível?</li>
-  </ul>
-  <div class="app-update-musician-body">
-<ul>
-    <li>${musician.name}</li>
-    <li>${musician.email}</li>
-    <li class="app-update-musician-changeable">${musician.instruments
-      .map((ins) => {
-        return `<p>${ins}<span>x</span></p>`;
-      })
-      .join('')}
-      <input type="text"placeholder="Buscar por email..." id="instrumentos" class="app-form-input" />
-      </li>
-    <li class="app-update-musician-changeable">
-    <div>${musician.musicGenres
-      .map((genre) => {
-        return `<p>${genre}<span>x</span></p>`;
-      })
-      .join('')}
-      </div>
-      <input type="text" placeholder="Buscar por email..." id="generos" class="app-form-input"/>
-      </li>
-    <li>${musician.available ? 'sim' : 'não'}</li>
-    </ul>
-  </div>
-  `;
-
-  const appBody = document.getElementById('app-body')!;
-  appBody.appendChild(divMusicianData);
+  const nameInput = document.getElementById("nome") as HTMLInputElement;
+  const emailInput = document.getElementById("email") as HTMLInputElement;
+  const instrumentsInput = document.getElementById(
+    "instrumentos"
+  ) as HTMLInputElement;
+  const musicGenresInput = document.getElementById(
+    "generos"
+  ) as HTMLInputElement;
+  const button = document.querySelector(
+    ".app-form-button"
+  ) as HTMLButtonElement;
+  nameInput.value = musician.name;
+  emailInput.disabled = true;
+  instrumentsInput.disabled = false;
+  musicGenresInput.disabled = false;
+  button.classList.add("button-save");
+  button.innerText = "Salvar";
+  getArrayElements(musician.instruments, "form-group-genres");
+  getArrayElements(musician.musicGenres, "form-button");
 };
-
-/*const addNewItemArray = (array: string[], id: string) => {
-  const item = inputSingleString(id);
-  item && array.push(item);
-};
- */
 
 export { musicianData, updateMusician };
