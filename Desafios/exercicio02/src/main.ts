@@ -1,7 +1,7 @@
-import { getMusiciansLocalStorage } from "./utils/LocalStorage";
-//import { createMusician } from "./views/CreateMusician";
-import { menu } from "./views/MenuView";
-import { updateMusician } from "./views/UpdateMusician";
+import { getMusiciansLocalStorage } from './utils/LocalStorage';
+//import { createMusician } from './views/CreateMusician';
+import { menu } from './views/MenuView';
+import { updateMusician } from './views/UpdateMusician';
 
 const musicians = getMusiciansLocalStorage();
 

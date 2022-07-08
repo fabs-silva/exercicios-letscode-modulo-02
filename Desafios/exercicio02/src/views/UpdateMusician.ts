@@ -1,18 +1,21 @@
-import { findByEmailButton } from "../controllers/UpdateMusicianController";
-import { Musician } from "../models/Musician";
-import { getTitle } from "../utils/General";
+import {
+  deleteItemArray,
+  findByEmailButton,
+} from '../controllers/UpdateMusicianController';
+import { Musician } from '../models/Musician';
+import { getTitle } from '../utils/General';
 
-const updateMusician = (musicians: Musician[]) => {
-  const appBody = document.getElementById("app-body") as HTMLDivElement;
-  appBody.appendChild(getTitle("Modificar Músico"));
+const updateMusician = (musicians: Musician[]): void => {
+  const appBody = document.getElementById('app-body') as HTMLDivElement;
+  appBody.appendChild(getTitle('Modificar Músico'));
   appBody.appendChild(formUpdateMusician());
 
   findByEmailButton(musicians);
 };
 
-const formUpdateMusician = () => {
-  const form = document.createElement("form") as HTMLFormElement;
-  form.classList.add("app-form");
+const formUpdateMusician = (): HTMLFormElement => {
+  const form = document.createElement('form') as HTMLFormElement;
+  form.classList.add('app-form');
 
   form.innerHTML = `
    <legend>Digite o email para buscar um músico:</legend>
@@ -26,58 +29,84 @@ const formUpdateMusician = () => {
     </fieldset>
     <fieldset class="app-form-group" id="form-group-instruments">
         <label for="instrumentos" class="app-form-label">Instrumento(s):<span>* Separados por vírgula</span></label>
-        <input type="text" placeholder="Escolha pelo menos 1 instrumento" id="instrumentos" class="app-form-input" disabled/>
+        <input type="text" placeholder="Escolha pelo menos um instrumento" id="instrumentos" class="app-form-input" disabled/>
     </fieldset>
-    <fieldset class="app-form-group" id="form-group-genres">
+    <fieldset class="app-form-group" id="form-group-musicGenres">
         <label for="generos" class="app-form-label">Gênero(s):<span>* Separados por vírgula</span></label>
         <input type="text" placeholder="Escolha pelo menos um gênero" id="generos" class="app-form-input" disabled/>
     </fieldset>
     <div class="app-form-button-container" id="form-button">
-      <button class="app-form-button">Buscar</button>
+      <button class="app-form-button" id="find-button">Buscar</button>
+      <button class="app-form-button" id="save-button" disabled>Salvar</button>
     </div>
   `;
 
   return form;
 };
 
-const renderArrayElements = (arrayItems: string[], id: string) => {
-  const divArray = document.createElement("div") as HTMLDivElement;
-  divArray.classList.add("app-update-musician-array");
+const renderArrayElements = (
+  arrayItems: string[],
+  id: string,
+  nextElement: string
+) => {
+  const divArray = document.createElement('div') as HTMLDivElement;
+  divArray.classList.add('app-update-musician-array');
 
-  divArray.innerHTML = `<ul id="list-${id}">
-   <li class="app-update-musician-changeable">${arrayItems
-     .map((item) => {
-       return `<p>${item}<span>x</span></p>`;
-     })
-     .join("")}
-     </ul>`;
+  divArray.innerHTML = `
+   <div class="app-update-musician-changeable" id="list-${id}">${arrayItems
+    .map((item) => {
+      return `<p id=${item}>${item}<span>x</span></p>`;
+    })
+    .join('')}
+     </div>`;
 
-  const form = document.querySelector(".app-form") as HTMLFormElement;
-  const fieldsetArray = document.getElementById(id) as HTMLElement;
+  const form = document.querySelector('.app-form') as HTMLFormElement;
+  const fieldsetArray = document.getElementById(nextElement) as HTMLElement;
   form.insertBefore(divArray, fieldsetArray);
 };
 
 const musicianData = (musician: Musician) => {
-  const nameInput = document.getElementById("nome") as HTMLInputElement;
-  const emailInput = document.getElementById("email") as HTMLInputElement;
-  const instrumentsInput = document.getElementById(
-    "instrumentos"
-  ) as HTMLInputElement;
-  const musicGenresInput = document.getElementById(
-    "generos"
-  ) as HTMLInputElement;
-  const button = document.querySelector(
-    ".app-form-button"
-  ) as HTMLButtonElement;
+  const nameInput = document.getElementById('nome') as HTMLInputElement;
   nameInput.value = musician.name;
+
+  const emailInput = document.getElementById('email') as HTMLInputElement;
   emailInput.disabled = true;
+
+  const instrumentsInput = document.getElementById(
+    'instrumentos'
+  ) as HTMLInputElement;
   instrumentsInput.disabled = false;
+
+  renderArrayElements(
+    musician.instruments,
+    'form-group-instruments',
+    'form-group-musicGenres'
+  );
+
+  deleteItemArray(musician, 'instruments');
+
+  const musicGenresInput = document.getElementById(
+    'generos'
+  ) as HTMLInputElement;
   musicGenresInput.disabled = false;
-  button.classList.remove("app-form-button");
-  button.classList.add("app-button-save");
-  button.innerText = "Salvar";
-  renderArrayElements(musician.instruments, "form-group-genres");
-  renderArrayElements(musician.musicGenres, "form-button");
+
+  renderArrayElements(
+    musician.musicGenres,
+    'form-group-musicGenres',
+    'form-button'
+  );
+
+  deleteItemArray(musician, 'musicGenres');
+
+  const findButton = document.getElementById(
+    'find-button'
+  ) as HTMLButtonElement;
+  findButton.disabled = true;
+
+  const saveButton = document.getElementById(
+    'save-button'
+  ) as HTMLButtonElement;
+  saveButton.disabled = false;
 };
 
 export { musicianData, updateMusician };

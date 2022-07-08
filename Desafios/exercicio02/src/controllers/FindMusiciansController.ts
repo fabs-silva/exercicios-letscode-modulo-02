@@ -3,28 +3,29 @@ import { sanitizeText } from '../utils/General';
 import { musiciansList } from '../views/FindMusicians';
 
 const findBySingleInput = (
-  input: string,
+  input: 'name' | 'email',
   musicians: Musician[]
-): Musician[] | null => {
+): Musician[] => {
   const findInput = document.getElementById(input) as HTMLInputElement;
+
   const findResult = musicians.filter(
     (mus) => sanitizeText(mus[input]) === sanitizeText(findInput.value)
   );
 
-  return findResult.length !== 0 ? findResult : null;
+  return findResult.length !== 0 ? findResult : [];
 };
 
 const findByArray = (
-  input: string,
+  input: 'instruments' | 'musicGenres',
   musicians: Musician[]
-): Musician[] | null => {
+): Musician[] => {
   const findInput = document.getElementById(input) as HTMLInputElement;
 
-  const findResult = musicians.filter((musician) =>
-    musician[input].find((inst: string) => inst === findInput.value)
+  const findResult = musicians.filter((mus) =>
+    mus[input].find((inst: string) => inst === findInput.value)
   );
 
-  return findResult.length !== 0 ? findResult : null;
+  return findResult.length !== 0 ? findResult : [];
 };
 
 const checkWhichIsSelected = () => {
@@ -74,7 +75,7 @@ const findMusiciansButton = (musicians: Musician[]) => {
 
   button?.addEventListener('click', () => {
     const inputNames = checkWhichIsSelected();
-    let results = musicians;
+    let results: Musician[] = musicians;
 
     if (!inputNames) {
       return;

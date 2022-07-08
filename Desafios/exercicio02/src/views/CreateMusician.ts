@@ -2,14 +2,14 @@ import { addMusicianButton } from '../controllers/CreateMusicianController';
 import { Musician } from '../models/Musician';
 import { getTitle } from '../utils/General';
 
-const createMusician = (musicians: Musician[]) => {
+const createMusician = (musicians: Musician[]): void => {
   const appBody = document.getElementById('app-body') as HTMLDivElement;
   appBody.appendChild(getTitle('Cadastrar Músico'));
   appBody?.appendChild(formCreateMusician());
   addMusicianButton(musicians);
 };
 
-const formCreateMusician = () => {
+const formCreateMusician = (): HTMLFormElement => {
   const form = document.createElement('form') as HTMLFormElement;
   form.classList.add('app-form');
 
@@ -24,24 +24,11 @@ const formCreateMusician = () => {
     </fieldset>
     <fieldset class="app-form-group" id="form-group-instruments">
         <label for="instrumentos" class="app-form-label">Instrumento(s):<span>* Separados por vírgula</span></label>
-        <input type="text" placeholder="Escolha pelo menos 1 instrumento" id="instrumentos" class="app-form-input" required/>
+        <input type="text" placeholder="Escolha pelo menos um instrumento" id="instrumentos" class="app-form-input" required/>
     </fieldset>
-    <fieldset class="app-form-group" id="form-group-genres">
+    <fieldset class="app-form-group" id="form-group-musicGenres">
         <label for="generos" class="app-form-label">Gênero(s):<span>* Separados por vírgula</span></label>
         <input type="text" placeholder="Escolha pelo menos um gênero" id="generos" class="app-form-input" required/>
-    </fieldset>
-    <fieldset class="app-form-group" id="form-group-available">
-        <label class="app-form-label">Está disponível?</label>
-        <div class="app-form-radio">
-        <fieldset class="app-form-radio-option">
-        <input type="radio" name="disponivel" id="disponivel" value="true" required/>
-        <label for="disponivel"></label>Sim</label>
-        </fieldset>
-        <fieldset class="app-form-radio-option">
-        <input type="radio" name="disponivel" id="nao-disponivel" value="false" required/>
-        <label for="nao-disponivel"></label>Não</label>
-        </fieldset>
-        </div>
     </fieldset>
     <div class="app-form-button-container">
       <button class="app-form-button">Cadastrar</button>

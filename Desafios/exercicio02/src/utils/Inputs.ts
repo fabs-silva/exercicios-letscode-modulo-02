@@ -1,11 +1,19 @@
 const inputSingleString = (id: string) => {
   const inputString = document.getElementById(id) as HTMLInputElement;
 
+  if (inputString.value === '') {
+    return;
+  }
+
   return inputString.value.toLowerCase().trim();
 };
 
 const inputMultipleStrings = (id: string) => {
   const inputArray = document.getElementById(id) as HTMLInputElement;
+
+  if (inputArray.value === '') {
+    return;
+  }
 
   let arrayItems: string[] = Array.from(
     inputArray.value.toLowerCase().split(','),
@@ -13,6 +21,9 @@ const inputMultipleStrings = (id: string) => {
   );
 
   for (let item of arrayItems) {
+    if (item === '') {
+      return;
+    }
     item = item.trim();
   }
 
@@ -21,12 +32,4 @@ const inputMultipleStrings = (id: string) => {
   return arrayUniqueValues;
 };
 
-const inputBoolean = (id: string) => {
-  const inputBoolean = document.querySelector(
-    `[name = ${id}]`
-  ) as HTMLInputElement;
-
-  return inputBoolean.checked.valueOf();
-};
-
-export { inputSingleString, inputMultipleStrings, inputBoolean };
+export { inputSingleString, inputMultipleStrings };

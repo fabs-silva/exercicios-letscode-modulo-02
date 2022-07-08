@@ -1,9 +1,5 @@
 import { Musician } from '../models/Musician';
-import {
-  inputBoolean,
-  inputMultipleStrings,
-  inputSingleString,
-} from '../utils/Inputs';
+import { inputMultipleStrings, inputSingleString } from '../utils/Inputs';
 import { saveMusicianLocalStorage } from '../utils/LocalStorage';
 import { findBySingleInput } from './FindMusiciansController';
 
@@ -12,7 +8,11 @@ const addMusician = (musicians: Musician[]): void => {
   const email = inputSingleString('email');
   const instruments = inputMultipleStrings('instrumentos');
   const musicGenres = inputMultipleStrings('generos');
-  const available = inputBoolean('disponivel');
+
+  if (!name || !email || !instruments || !musicGenres) {
+    alert('Você deve preencher todos os campos');
+    return;
+  }
 
   if (checkEmailExists(musicians)) {
     alert('Email já existe na base de dados');
@@ -24,7 +24,6 @@ const addMusician = (musicians: Musician[]): void => {
     email,
     instruments,
     musicGenres,
-    available,
   });
 
   musicians.push(musician);
@@ -37,7 +36,7 @@ const addMusician = (musicians: Musician[]): void => {
 const checkEmailExists = (musicians: Musician[]): boolean => {
   const findEmail = findBySingleInput('email', musicians);
 
-  return findEmail ? true : false;
+  return findEmail.length !== 0 ? true : false;
 };
 
 const addMusicianButton = (musicians: Musician[]) => {

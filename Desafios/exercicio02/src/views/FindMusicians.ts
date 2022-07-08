@@ -31,7 +31,7 @@ const formFindMusicians = () => {
             <label for="instrumento"><input type="checkbox" value="buscar-instrumento" id="find-instruments"/> Instrumento:</label>
             <input type="text" placeholder="Buscar por instrumento..." id="instruments" class="app-form-input"/>
         </fieldset>
-        <fieldset class="app-find-by-group" id="form-group-genres">
+        <fieldset class="app-find-by-group" id="form-group-musicGenres">
             <label for="genero"><input type="checkbox" value="buscar-genero" id="find-musicGenres"/> Gênero:</label>
             <input type="text" placeholder="Buscar por gênero..." id="musicGenres" class="app-form-input"/>
         </fieldset>
@@ -79,7 +79,6 @@ const musiciansList = (musicians: Musician[]) => {
         return `<span>${genre}</span>`;
       })
       .join('/ ')}</li>
-    <li>${mus.available ? 'sim' : 'não'}</li>
     </ul>`;
       })
       .join('')}
