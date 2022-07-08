@@ -40,11 +40,11 @@ const formUpdateMusician = () => {
   return form;
 };
 
-const getArrayElements = (arrayItems: string[], id: string) => {
+const renderArrayElements = (arrayItems: string[], id: string) => {
   const divArray = document.createElement("div") as HTMLDivElement;
   divArray.classList.add("app-update-musician-array");
 
-  divArray.innerHTML = `<ul>
+  divArray.innerHTML = `<ul id="list-${id}">
    <li class="app-update-musician-changeable">${arrayItems
      .map((item) => {
        return `<p>${item}<span>x</span></p>`;
@@ -73,10 +73,11 @@ const musicianData = (musician: Musician) => {
   emailInput.disabled = true;
   instrumentsInput.disabled = false;
   musicGenresInput.disabled = false;
-  button.classList.add("button-save");
+  button.classList.remove("app-form-button");
+  button.classList.add("app-button-save");
   button.innerText = "Salvar";
-  getArrayElements(musician.instruments, "form-group-genres");
-  getArrayElements(musician.musicGenres, "form-button");
+  renderArrayElements(musician.instruments, "form-group-genres");
+  renderArrayElements(musician.musicGenres, "form-button");
 };
 
 export { musicianData, updateMusician };

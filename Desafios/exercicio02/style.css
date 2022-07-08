@@ -178,7 +178,8 @@ input[type="radio"] {
   gap: 1.5rem;
 }
 
-.app-form-button {
+.app-form-button,
+.app-button-save {
   background-color: var(--orange);
   color: var(--white);
   min-width: 8rem;
