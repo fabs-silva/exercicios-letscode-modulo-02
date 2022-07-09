@@ -16,8 +16,8 @@
   --darker-gray: #444444;
   --red: #d62828;
   --black-alpha: rgba(0, 0, 0, 0.1);
-  --font-body: 'Fredoka', sans-serif;
-  --font-title: 'Goldman', sans-serif;
+  --font-body: "Fredoka", sans-serif;
+  --font-title: "Goldman", sans-serif;
 }
 
 body {
@@ -80,7 +80,7 @@ ul {
   list-style-type: none;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   margin-right: 0.3rem;
 }
 
@@ -203,7 +203,7 @@ input[type='checkbox'] {
 .app-search-results-header,
 .app-search-results-body ul {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
 }
 

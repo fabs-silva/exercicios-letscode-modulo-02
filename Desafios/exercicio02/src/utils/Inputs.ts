@@ -1,7 +1,7 @@
 const inputSingleString = (id: string) => {
   const inputString = document.getElementById(id) as HTMLInputElement;
 
-  if (inputString.value === '') {
+  if (inputString.value === "") {
     return;
   }
 
@@ -11,17 +11,17 @@ const inputSingleString = (id: string) => {
 const inputMultipleStrings = (id: string) => {
   const inputArray = document.getElementById(id) as HTMLInputElement;
 
-  if (inputArray.value === '') {
+  if (inputArray.value === "") {
     return;
   }
 
   let arrayItems: string[] = Array.from(
-    inputArray.value.toLowerCase().split(','),
+    inputArray.value.toLowerCase().split(","),
     (i) => i.trim()
   );
 
   for (let item of arrayItems) {
-    if (item === '') {
+    if (item === "") {
       return;
     }
     item = item.trim();
