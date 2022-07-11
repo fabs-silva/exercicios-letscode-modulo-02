@@ -1,33 +1,21 @@
-import { Pokemon } from './models/Pokemon';
-import './style.css';
-import { gettingApiPromise, randomNumbers } from './utils';
+import { createNewPokemon, getPokemonsApi } from "./contollers";
+import { Pokemon } from "./models/Pokemon";
+import { renderPlayerArea } from "./view";
 
-const gettingListPokemons = (arrayNumbers: number[]) => {
-  const apiPromise = gettingApiPromise(
-    `${import.meta.env.VITE_BASE_URL}pokemon_types.json`
-  );
-  apiPromise.then((response) => {
-    let pokemonArray: Pokemon[] = [];
+const promiseArray = getPokemonsApi();
+const arraySelectors = [
+  "app-player-cards",
+  "app-cards-area",
+  "app-card",
+  "app-card",
+];
 
-    for (let number of arrayNumbers) {
-      const pokemon: Pokemon = Array.from(response).find(
-        (p) => p.pokemon_id === number
-      );
-
-      pokemonArray = [...pokemonArray, pokemon];
-    }
-
-    return pokemonArray;
+Promise.allSettled(promiseArray).then((results) => {
+  let pokemonArray: Pokemon[] = [];
+  results.forEach((result) => {
+    const newPokemon = createNewPokemon(result);
+    pokemonArray.push(newPokemon);
   });
-};
-
-const gettingTypeEffectiveness = () => {
-  const apiPromise = gettingApiPromise(
-    `${import.meta.env.VITE_BASE_URL}type_effectiveness.json`
-  );
-  apiPromise.then((response) => {
-    return response;
-  });
-};
-
-console.log(gettingListPokemons(randomNumbers(10)));
+  renderPlayerArea("player1");
+  renderPlayerArea("player2");
+});

@@ -1,5 +1,5 @@
 {
-  "name": "exercicio03",
+  "name": "exercicio02",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -8,7 +8,11 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/uuid": "^8.3.4",
     "typescript": "^4.5.4",
     "vite": "^2.9.9"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
   }
 }

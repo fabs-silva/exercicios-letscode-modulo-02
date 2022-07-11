@@ -1,8 +1,8 @@
-import './style.css'
+import { getMusiciansLocalStorage } from "./utils/LocalStorage";
+import { createBands } from "./views/CreateBands";
+import { menu } from "./views/MenuView";
 
-const app = document.querySelector<HTMLDivElement>('#app')!
+const musicians = getMusiciansLocalStorage();
 
-app.innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+menu();
+createBands(musicians);

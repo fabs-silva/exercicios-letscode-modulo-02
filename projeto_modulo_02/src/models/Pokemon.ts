@@ -1,20 +1,41 @@
 interface PokemonContract {
-  form: string;
   id: number;
   name: string;
-  type: string[];
+  image: string;
+  types: string[];
+}
+
+export interface ResponsePokemon {
+  id: number;
+  species: {
+    name: string;
+  };
+  sprites: {
+    other: {
+      home: {
+        front_default: string;
+      };
+    };
+  };
+  types: PokemonType[];
+}
+
+interface PokemonType {
+  type: {
+    name: string;
+  };
 }
 
 export class Pokemon implements PokemonContract {
-  public form: string;
   public id: number;
   public name: string;
-  public type: string[];
+  public image: string;
+  public types: string[];
 
-  constructor({ form, id, name, type }: PokemonContract) {
-    this.form = form;
+  constructor({ id, name, image, types }: PokemonContract) {
     this.id = id;
     this.name = name;
-    this.type = type;
+    this.image = image;
+    this.types = types;
   }
 }
