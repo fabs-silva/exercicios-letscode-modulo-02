@@ -1,18 +1,18 @@
-import { Pokemon, ResponsePokemon } from "./models/Pokemon";
+import { Pokemon, ResponsePokemon } from './models/Pokemon';
 
 const selectNumberCards = () => {
   let promptText =
-    prompt("Escolha o número de cartas para cada jogador (de 1 a 10)") || "";
+    prompt('Escolha o número de cartas para cada jogador (de 1 a 6)') || '';
 
   const isnum = /^\d+$/;
 
   while (
     !isnum.test(promptText) ||
     parseInt(promptText) < 1 ||
-    parseInt(promptText) > 10
+    parseInt(promptText) > 6
   ) {
     promptText =
-      prompt("Escolha o número de cartas para cada jogador (de 1 a 10)") || "";
+      prompt('Escolha o número de cartas para cada jogador (de 1 a 6)') || '';
   }
 
   return parseInt(promptText);

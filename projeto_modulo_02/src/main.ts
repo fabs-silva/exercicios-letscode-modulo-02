@@ -1,6 +1,15 @@
 //import { createNewPokemon, getPokemonsApi } from "./contollers";
 //import { Pokemon } from "./models/Pokemon";
-import { renderPlayerArea } from "./view";
+import { renderBoard } from './view';
+
+renderBoard();
+
+/* const pokemon = new Pokemon({
+  id: 1,
+  name: 'Pikachu',
+  image: './pokemon.jpg',
+  types: ['Electric'],
+}); */
 
 /* const promiseArray = getPokemonsApi();
 const arraySelectors = [
@@ -20,5 +29,3 @@ const arraySelectors = [
   renderPlayerArea("player2");
 });
  */
-renderPlayerArea("player1");
-renderPlayerArea("player2");
