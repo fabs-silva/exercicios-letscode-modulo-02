@@ -18,46 +18,57 @@ const renderPlayerArea = (playerId: "player1" | "player2") => {
   playerArea.appendChild(playerGameInfo);
 };
 
-const renderCards = (cardsAreaSelectors: string[], pokemons: Pokemon[]) => {
-  const cardsArea = document.querySelector(
-    cardsAreaSelectors[0]
-  ) as HTMLDivElement;
+const renderSmallCards = (
+  cardsAreaSelector: string,
+  cardsMainArea: string,
+  pokemons: Pokemon[]
+) => {
+  const cardsArea = document.querySelector(cardsAreaSelector) as HTMLDivElement;
   const cardsDiv = document.createElement("div") as HTMLDivElement;
-  cardsDiv.classList.add(cardsAreaSelectors[1]);
+  cardsDiv.classList.add(cardsMainArea);
 
   pokemons.forEach((pokemon) => {
     const card = document.createElement("div") as HTMLDivElement;
-    card.classList.add(cardsAreaSelectors[2]);
-    card.id = `${cardsAreaSelectors[3]}-${pokemon.id}`;
+    card.classList.add("smallCards");
+    card.id = `${cardsMainArea}-${pokemon.id || "0"}`;
 
-    card.innerHTML = `<p>${pokemon.name}</p>
-    <img src=${pokemon.image} alt=${pokemon.name} />
-    <p>${pokemon.types
-      .map((type) => {
-        return `<span>${type}</span>`;
-      })
-      .join("")}</p>
+    card.innerHTML = `<p>${pokemon.name || "Pikachu"}</p>
+    <img src=${pokemon.image || "./pokemon.jpg"} alt=${
+      pokemon.name || "pikachu"
+    } />
+    <p>${
+      pokemon.types
+        .map((type) => {
+          return `<span>${type}</span>`;
+        })
+        .join("") || `<span>Electric</span>`
+    }</p>
     `;
   });
   cardsArea.appendChild(cardsDiv);
-};
-
-const renderCardsLeft = (pokemons: Pokemon[]) => {
-  const cardsArea = document.querySelector(
-    ".app-player-cards"
-  ) as HTMLDivElement;
 };
 
 const renderMainCard = (pokemon: Pokemon) => {
   const cardsArea = document.querySelector(
     ".app-player-cards"
   ) as HTMLDivElement;
-};
+  const card = document.createElement("div") as HTMLDivElement;
+  card.classList.add("app-main-card");
+  card.id = `main-card-${pokemon.id || 0}`;
 
-const renderCardsUsed = (pokemon: Pokemon) => {
-  const cardsArea = document.querySelector(
-    ".app-player-cards"
-  ) as HTMLDivElement;
+  card.innerHTML = `<p>${pokemon.name || "Pikachu"}</p>
+    <img src=${pokemon.image || "./pokemon.jpg"} alt=${
+    pokemon.name || "pikachu"
+  } />
+    <p>${
+      pokemon.types
+        .map((type) => {
+          return `<span>${type}</span>`;
+        })
+        .join("") || `<span>Electric</span>`
+    }</p>
+    `;
+  cardsArea.appendChild(card);
 };
 
 /*         <div class="app-player-name"></div>

@@ -1,16 +1,16 @@
-import { createNewPokemon, getPokemonsApi } from "./contollers";
-import { Pokemon } from "./models/Pokemon";
+//import { createNewPokemon, getPokemonsApi } from "./contollers";
+//import { Pokemon } from "./models/Pokemon";
 import { renderPlayerArea } from "./view";
 
-const promiseArray = getPokemonsApi();
+/* const promiseArray = getPokemonsApi();
 const arraySelectors = [
   "app-player-cards",
   "app-cards-area",
   "app-card",
   "app-card",
-];
+]; */
 
-Promise.allSettled(promiseArray).then((results) => {
+/* Promise.allSettled(promiseArray).then((results) => {
   let pokemonArray: Pokemon[] = [];
   results.forEach((result) => {
     const newPokemon = createNewPokemon(result);
@@ -19,3 +19,6 @@ Promise.allSettled(promiseArray).then((results) => {
   renderPlayerArea("player1");
   renderPlayerArea("player2");
 });
+ */
+renderPlayerArea("player1");
+renderPlayerArea("player2");
