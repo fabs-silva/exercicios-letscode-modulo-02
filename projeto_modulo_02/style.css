@@ -16,14 +16,15 @@
   --dark-red: #cc0000;
   --yellow: #fccf00;
   --black-alpha: rgba(0, 0, 0, 0.1);
-  --font: 'Work Sans', sans-serif;
+  --font-title: 'Grandstander', sans-serif;
+  --font-text: 'Nunito', sans-serif;
 }
 
 body {
   min-height: 100vh;
   background-color: var(--white);
   color: var(--darker-gray);
-  font-family: var(--font);
+  font-family: var(--font-text);
   font-weight: 300;
   font-size: 18px;
 }
@@ -31,6 +32,30 @@ body {
 img {
   width: 100%;
   height: auto;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+button:hover,
+button:visited,
+button:active {
+  opacity: 0.9;
+}
+
+button:disabled {
+  background-color: var(--dark-gray);
+  color: var(--black);
+  cursor: inherit;
+}
+
+button:disabled:hover,
+button:disabled:visited,
+button:disabled:active {
+  opacity: 1;
 }
 
 #game-board {
@@ -85,12 +110,20 @@ img {
 }
 
 .game-player-name {
+  font-family: var(--font-title);
   color: var(--blue);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
 }
 
-.game-player-cards,
+.game-player-cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .game-player-cards-left {
   display: flex;
   justify-content: space-between;
@@ -107,7 +140,6 @@ img {
   outline: 2px solid var(--blue);
   border-radius: 0.5rem;
   padding: 0.5rem;
-  gap: 1rem;
 }
 
 .game-main-card {
@@ -120,21 +152,34 @@ img {
   height: 3.5rem;
 }
 
+.game-main-card h2,
+.game-small-card h2 {
+  font-family: var(--font-title);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .game-main-card h2 {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .game-main-card p {
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 0.8rem;
 }
 
 .game-main-card img {
   width: 60%;
+  height: auto;
+  object-fit: cover;
 }
 
-.game-card-turned img {
+.game-small-card h2 {
+  font-size: 1rem;
+}
+
+.game-small-card img {
   width: 80%;
 }
 
@@ -147,8 +192,15 @@ img {
 
 .game-results-versus {
   font-size: 3rem;
-  font-weight: 600;
-  height: 50%;
+  font-family: var(--font-title);
+}
+
+.game-results-button {
+  font-family: var(--font-title);
+  color: var(--yellow);
+  background-color: var(--blue);
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
 }
 
 .game-results-versus span {
@@ -164,13 +216,12 @@ img {
 
 .game-results-round-winner {
   font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--font-title);
   color: var(--blue);
 }
 
 .game-results-round-result {
   font-size: 1rem;
-  font-weight: 300;
 }
 
 .game-footer {
