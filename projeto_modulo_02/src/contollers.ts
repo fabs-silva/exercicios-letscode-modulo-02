@@ -1,8 +1,8 @@
-import { Pokemon, ResponsePokemon } from './models/Pokemon';
+import { Pokemon, ResponsePokemon } from "./models/Pokemon";
 
 const selectNumberCards = () => {
   let promptText =
-    prompt('Escolha o número de cartas para cada jogador (de 1 a 6)') || '';
+    prompt("Escolha o número de cartas para cada jogador (de 1 a 6)") || "";
 
   const isnum = /^\d+$/;
 
@@ -12,7 +12,7 @@ const selectNumberCards = () => {
     parseInt(promptText) > 6
   ) {
     promptText =
-      prompt('Escolha o número de cartas para cada jogador (de 1 a 6)') || '';
+      prompt("Escolha o número de cartas para cada jogador (de 1 a 6)") || "";
   }
 
   return parseInt(promptText);
@@ -23,12 +23,12 @@ const randomNumbers = (): number[] => {
   let numbersArray: number[] = [];
 
   for (let i = 0; i < quantity * 2; i++) {
-    let newNumber = Math.floor(Math.random() * 905 + 1);
+    let newNumber = Math.floor(Math.random() * 900 + 1);
 
     const checkNumberInArray = numbersArray.find((n) => n === newNumber);
 
     if (checkNumberInArray) {
-      newNumber = Math.floor(Math.random() * 905 + 1);
+      newNumber = Math.floor(Math.random() * 900 + 1);
     }
 
     numbersArray = [...numbersArray, newNumber];
