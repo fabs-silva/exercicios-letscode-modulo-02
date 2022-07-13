@@ -1,10 +1,21 @@
-//import { createNewPokemon, getPokemonsApi } from "./contollers";
-import { randomNumbers } from './Controllers/GeneralControllers';
-import { Pokemon } from './models/Pokemon';
+/* import { createPlayers } from "./Controllers/PlayerController";
+import {
+  createNewPokemon,
+  getPokemonsApi,
+} from "./Controllers/PokemonContollers";
+import { Pokemon } from "./models/Pokemon";
+import { renderBoard } from "./views/BoardRender";
 
-/* const promiseArray = getPokemonsApi();
+const promiseArray = getPokemonsApi();
+const players = createPlayers(); */
 
-Promise.allSettled(promiseArray).then((results) => {
+alert(`falta:
+- atualizar cartas restantes
+- botão continua
+- update textos
+- fim do jogo `);
+
+/* Promise.allSettled(promiseArray).then((results) => {
   let pokemonArray: Pokemon[] = [];
   results.forEach((result) => {
     const newPokemon = createNewPokemon(result);
@@ -12,18 +23,17 @@ Promise.allSettled(promiseArray).then((results) => {
   });
 
   const numberOfCards = pokemonArray.length / 2;
-  const selectedPokemons = [
-    pokemonArray.slice(0, numberOfCards),
-    pokemonArray.slice(numberOfCards, pokemonArray.length),
-  ];
-  renderBoard(selectedPokemons);
-});
- */
+  players[0].cards = pokemonArray.slice(0, numberOfCards);
+  players[1].cards = pokemonArray.slice(numberOfCards, pokemonArray.length);
 
-import { FakeApi } from '../assets/fakeApi';
-import { compareTypeEffectiveness } from './Controllers/GameController';
-import { createPlayers } from './Controllers/PlayerController';
-import { renderBoard } from './views/BoardRender';
+  renderBoard(players);
+}); */
+
+import { randomNumbers } from "./Controllers/GeneralControllers";
+import { Pokemon } from "./models/Pokemon";
+import { FakeApi } from "../assets/fakeApi";
+import { createPlayers } from "./Controllers/PlayerController";
+import { renderBoard } from "./views/BoardRender";
 
 const arrayNumbers = randomNumbers();
 const players = createPlayers();

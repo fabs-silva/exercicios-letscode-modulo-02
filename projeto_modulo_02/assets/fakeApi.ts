@@ -1,422 +1,422 @@
 export const FakeApi = [
   {
     id: 2,
-    name: 'orbeetle',
+    name: "orbeetle",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/826.png',
-    types: ['bug', 'psychic'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/826.png",
+    types: ["bug", "psychic"],
   },
   {
     id: 3,
-    name: 'shelgon',
+    name: "shelgon",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/372.png',
-    types: ['dragon'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/372.png",
+    types: ["dragon"],
   },
   {
     id: 4,
-    name: 'hippowdon',
+    name: "hippowdon",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/450.png',
-    types: ['ground'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/450.png",
+    types: ["ground"],
   },
   {
     id: 5,
-    name: 'wailord',
+    name: "wailord",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/321.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/321.png",
+    types: ["water"],
   },
   {
     id: 6,
-    name: 'psyduck',
+    name: "psyduck",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/54.png",
+    types: ["water"],
   },
   {
     id: 7,
-    name: 'lumineon',
+    name: "lumineon",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/457.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/457.png",
+    types: ["water"],
   },
   {
     id: 8,
-    name: 'silvally',
+    name: "silvally",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/773.png',
-    types: ['normal'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/773.png",
+    types: ["normal"],
   },
   {
     id: 9,
-    name: 'cinderace',
+    name: "cinderace",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/815.png',
-    types: ['fire'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/815.png",
+    types: ["fire"],
   },
   {
     id: 10,
-    name: 'magneton',
+    name: "magneton",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/82.png',
-    types: ['electric', 'steel'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/82.png",
+    types: ["electric", "steel"],
   },
   {
     id: 11,
-    name: 'zeraora',
+    name: "zeraora",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/807.png',
-    types: ['electric'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/807.png",
+    types: ["electric"],
   },
   {
     id: 12,
-    name: 'beedrill',
+    name: "beedrill",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png',
-    types: ['bug', 'poison'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png",
+    types: ["bug", "poison"],
   },
   {
     id: 13,
-    name: 'clefairy',
+    name: "clefairy",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png',
-    types: ['fairy'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png",
+    types: ["fairy"],
   },
   {
     id: 14,
-    name: 'gastrodon',
+    name: "gastrodon",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/423.png',
-    types: ['water', 'ground'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/423.png",
+    types: ["water", "ground"],
   },
   {
     id: 15,
-    name: 'kyogre',
+    name: "kyogre",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/382.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/382.png",
+    types: ["water"],
   },
   {
     id: 16,
-    name: 'numel',
+    name: "numel",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/322.png',
-    types: ['fire', 'ground'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/322.png",
+    types: ["fire", "ground"],
   },
   {
     id: 17,
-    name: 'cradily',
+    name: "cradily",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/346.png',
-    types: ['rock', 'grass'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/346.png",
+    types: ["rock", "grass"],
   },
   {
     id: 18,
-    name: 'steelix',
+    name: "steelix",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png',
-    types: ['steel', 'ground'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png",
+    types: ["steel", "ground"],
   },
   {
     id: 19,
-    name: 'lapras',
+    name: "lapras",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png',
-    types: ['water', 'ice'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png",
+    types: ["water", "ice"],
   },
   {
     id: 20,
-    name: 'scrafty',
+    name: "scrafty",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/560.png',
-    types: ['dark', 'fighting'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/560.png",
+    types: ["dark", "fighting"],
   },
   {
     id: 21,
-    name: 'lairon',
+    name: "lairon",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/305.png',
-    types: ['steel', 'rock'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/305.png",
+    types: ["steel", "rock"],
   },
   {
     id: 22,
-    name: 'entei',
+    name: "entei",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/244.png',
-    types: ['fire'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/244.png",
+    types: ["fire"],
   },
   {
     id: 23,
-    name: 'shellder',
+    name: "shellder",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/90.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/90.png",
+    types: ["water"],
   },
   {
     id: 24,
-    name: 'ampharos',
+    name: "ampharos",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/181.png',
-    types: ['electric'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/181.png",
+    types: ["electric"],
   },
   {
     id: 25,
-    name: 'anorith',
+    name: "anorith",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/347.png',
-    types: ['rock', 'bug'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/347.png",
+    types: ["rock", "bug"],
   },
   {
     id: 26,
-    name: 'spectrier',
+    name: "spectrier",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/897.png',
-    types: ['ghost'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/897.png",
+    types: ["ghost"],
   },
   {
     id: 27,
-    name: 'shaymin',
+    name: "shaymin",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/492.png',
-    types: ['grass'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/492.png",
+    types: ["grass"],
   },
   {
     id: 28,
-    name: 'ursaring',
+    name: "ursaring",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/217.png',
-    types: ['normal'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/217.png",
+    types: ["normal"],
   },
   {
     id: 29,
-    name: 'arctozolt',
+    name: "arctozolt",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/881.png',
-    types: ['electric', 'ice'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/881.png",
+    types: ["electric", "ice"],
   },
   {
     id: 30,
-    name: 'trapinch',
+    name: "trapinch",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/328.png',
-    types: ['ground'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/328.png",
+    types: ["ground"],
   },
   {
     id: 31,
-    name: 'lurantis',
+    name: "lurantis",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/754.png',
-    types: ['grass'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/754.png",
+    types: ["grass"],
   },
   {
     id: 32,
-    name: 'pidove',
+    name: "pidove",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/519.png',
-    types: ['normal', 'flying'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/519.png",
+    types: ["normal", "flying"],
   },
   {
     id: 33,
-    name: 'ferrothorn',
+    name: "ferrothorn",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/598.png',
-    types: ['grass', 'steel'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/598.png",
+    types: ["grass", "steel"],
   },
   {
     id: 34,
-    name: 'oshawott',
+    name: "oshawott",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/501.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/501.png",
+    types: ["water"],
   },
   {
     id: 35,
-    name: 'suicune',
+    name: "suicune",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/245.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/245.png",
+    types: ["water"],
   },
   {
     id: 36,
-    name: 'buizel',
+    name: "buizel",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/418.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/418.png",
+    types: ["water"],
   },
   {
     id: 37,
-    name: 'grimmsnarl',
+    name: "grimmsnarl",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/861.png',
-    types: ['dark', 'fairy'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/861.png",
+    types: ["dark", "fairy"],
   },
   {
     id: 38,
-    name: 'cherrim',
+    name: "cherrim",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/421.png',
-    types: ['grass'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/421.png",
+    types: ["grass"],
   },
   {
     id: 39,
-    name: 'lilligant',
+    name: "lilligant",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/549.png',
-    types: ['grass'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/549.png",
+    types: ["grass"],
   },
   {
     id: 40,
-    name: 'cosmog',
+    name: "cosmog",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/789.png',
-    types: ['psychic'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/789.png",
+    types: ["psychic"],
   },
   {
     id: 41,
-    name: 'skarmory',
+    name: "skarmory",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/227.png',
-    types: ['steel', 'flying'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/227.png",
+    types: ["steel", "flying"],
   },
   {
     id: 42,
-    name: 'garchomp',
+    name: "garchomp",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png',
-    types: ['dragon', 'ground'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png",
+    types: ["dragon", "ground"],
   },
   {
     id: 43,
-    name: 'eevee',
+    name: "eevee",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png',
-    types: ['normal'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
+    types: ["normal"],
   },
   {
     id: 44,
-    name: 'mothim',
+    name: "mothim",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/414.png',
-    types: ['bug', 'flying'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/414.png",
+    types: ["bug", "flying"],
   },
   {
     id: 45,
-    name: 'bidoof',
+    name: "bidoof",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png',
-    types: ['normal'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png",
+    types: ["normal"],
   },
   {
     id: 46,
-    name: 'burmy',
+    name: "burmy",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/412.png',
-    types: ['bug'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/412.png",
+    types: ["bug"],
   },
   {
     id: 47,
-    name: 'cacturne',
+    name: "cacturne",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/332.png',
-    types: ['grass', 'dark'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/332.png",
+    types: ["grass", "dark"],
   },
   {
     id: 48,
-    name: 'kingler',
+    name: "kingler",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/99.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/99.png",
+    types: ["water"],
   },
   {
     id: 49,
-    name: 'carvanha',
+    name: "carvanha",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/318.png',
-    types: ['water', 'dark'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/318.png",
+    types: ["water", "dark"],
   },
   {
     id: 50,
-    name: 'ponyta',
+    name: "ponyta",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/77.png',
-    types: ['fire'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/77.png",
+    types: ["fire"],
   },
   {
     id: 51,
-    name: 'natu',
+    name: "natu",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/177.png',
-    types: ['psychic', 'flying'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/177.png",
+    types: ["psychic", "flying"],
   },
   {
     id: 52,
-    name: 'dedenne',
+    name: "dedenne",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/702.png',
-    types: ['electric', 'fairy'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/702.png",
+    types: ["electric", "fairy"],
   },
   {
     id: 53,
-    name: 'voltorb',
+    name: "voltorb",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/100.png',
-    types: ['electric'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/100.png",
+    types: ["electric"],
   },
   {
     id: 54,
-    name: 'cosmoem',
+    name: "cosmoem",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/790.png',
-    types: ['psychic'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/790.png",
+    types: ["psychic"],
   },
   {
     id: 55,
-    name: 'dragapult',
+    name: "dragapult",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/887.png',
-    types: ['dragon', 'ghost'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/887.png",
+    types: ["dragon", "ghost"],
   },
   {
     id: 56,
-    name: 'sawsbuck',
+    name: "sawsbuck",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/586.png',
-    types: ['normal', 'grass'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/586.png",
+    types: ["normal", "grass"],
   },
   {
     id: 57,
-    name: 'garbodor',
+    name: "garbodor",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/569.png',
-    types: ['poison'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/569.png",
+    types: ["poison"],
   },
   {
     id: 58,
-    name: 'zoroark',
+    name: "zoroark",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/571.png',
-    types: ['dark'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/571.png",
+    types: ["dark"],
   },
   {
     id: 59,
-    name: 'inteleon',
+    name: "inteleon",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/818.png',
-    types: ['water'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/818.png",
+    types: ["water"],
   },
   {
     id: 60,
-    name: 'staraptor',
+    name: "staraptor",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/398.png',
-    types: ['normal', 'flying'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/398.png",
+    types: ["normal", "flying"],
   },
   {
     id: 1,
-    name: 'chansey',
+    name: "chansey",
     image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png',
-    types: ['normal'],
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png",
+    types: ["normal"],
   },
 ];

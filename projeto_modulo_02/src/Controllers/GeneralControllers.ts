@@ -1,6 +1,6 @@
 const selectNumberCards = () => {
   let promptText =
-    prompt('Escolha o número de cartas para cada jogador (de 1 a 6)') || '';
+    prompt("Escolha o número de cartas para cada jogador (de 1 a 6)") || "";
 
   const isnum = /^\d+$/;
 
@@ -10,7 +10,7 @@ const selectNumberCards = () => {
     parseInt(promptText) > 6
   ) {
     promptText =
-      prompt('Escolha o número de cartas para cada jogador (de 1 a 6)') || '';
+      prompt("Escolha o número de cartas para cada jogador (de 1 a 6)") || "";
   }
 
   return parseInt(promptText);

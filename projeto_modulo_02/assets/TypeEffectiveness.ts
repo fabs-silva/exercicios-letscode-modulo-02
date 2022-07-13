@@ -1,6 +1,11 @@
-export const TypeEffectiveness = [
+export interface TypeEffectivenessContract {
+  name: string;
+  effectiveness: { [key: string]: number };
+}
+
+export const TypeEffectiveness: TypeEffectivenessContract[] = [
   {
-    name: 'Bug',
+    name: "Bug",
     effectiveness: {
       Bug: 1,
       Dark: 1.6,
@@ -24,7 +29,7 @@ export const TypeEffectiveness = [
   },
 
   {
-    name: 'Dark',
+    name: "Dark",
     effectiveness: {
       Bug: 1,
       Dark: 0.625,
@@ -47,7 +52,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Dragon',
+    name: "Dragon",
     effectiveness: {
       Bug: 1,
       Dark: 1,
@@ -70,7 +75,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Electric',
+    name: "Electric",
     effectiveness: {
       Bug: 1,
       Dark: 1,
@@ -93,7 +98,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Fairy',
+    name: "Fairy",
     effectiveness: {
       Bug: 1,
       Dark: 1.6,
@@ -116,7 +121,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Lighting',
+    name: "Fighting",
     effectiveness: {
       Bug: 0.625,
       Dark: 1.6,
@@ -139,7 +144,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Fire',
+    name: "Fire",
     effectiveness: {
       Bug: 1.6,
       Dark: 1,
@@ -162,7 +167,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Flying',
+    name: "Flying",
     effectiveness: {
       Bug: 1.6,
       Dark: 1,
@@ -185,7 +190,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Ghost',
+    name: "Ghost",
     effectiveness: {
       Bug: 1,
       Dark: 0.625,
@@ -208,7 +213,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Grass',
+    name: "Grass",
     effectiveness: {
       Bug: 0.625,
       Dark: 1,
@@ -231,7 +236,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Ground',
+    name: "Ground",
     effectiveness: {
       Bug: 0.625,
       Dark: 1,
@@ -254,7 +259,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Ice',
+    name: "Ice",
     effectiveness: {
       Bug: 1,
       Dark: 1,
@@ -277,7 +282,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Normal',
+    name: "Normal",
     effectiveness: {
       Bug: 1,
       Dark: 1,
@@ -300,7 +305,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Poison',
+    name: "Poison",
     effectiveness: {
       Bug: 1,
       Dark: 1,
@@ -323,7 +328,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Psychic',
+    name: "Psychic",
     effectiveness: {
       Bug: 1,
       Dark: 0.390625,
@@ -346,7 +351,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Rock',
+    name: "Rock",
     effectiveness: {
       Bug: 1.6,
       Dark: 1,
@@ -369,7 +374,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Steel',
+    name: "Steel",
     effectiveness: {
       Bug: 1,
       Dark: 1,
@@ -392,7 +397,7 @@ export const TypeEffectiveness = [
     },
   },
   {
-    name: 'Water',
+    name: "Water",
     effectiveness: {
       Bug: 1,
       Dark: 1,

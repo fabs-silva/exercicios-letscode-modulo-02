@@ -1,12 +1,11 @@
-import { Pokemon, ResponsePokemon } from '../models/Pokemon';
-import { randomNumbers } from './GeneralControllers';
+import { Pokemon, ResponsePokemon } from "../models/Pokemon";
+import { randomNumbers } from "./GeneralControllers";
 
 const createNewPokemon = (result: unknown): Pokemon => {
   const pokemonResponse = result.value as ResponsePokemon;
   const types = pokemonResponse.types.map((type) => {
     return type.type.name;
   });
-  const teste = 
 
   return new Pokemon({
     id: pokemonResponse.id,
@@ -37,4 +36,3 @@ const getPokemonsApi = () => {
 };
 
 export { getPokemonsApi, createNewPokemon };
-

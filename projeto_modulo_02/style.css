@@ -16,8 +16,8 @@
   --dark-red: #cc0000;
   --yellow: #fccf00;
   --black-alpha: rgba(0, 0, 0, 0.1);
-  --font-title: 'Grandstander', sans-serif;
-  --font-text: 'Nunito', sans-serif;
+  --font-title: "Grandstander", sans-serif;
+  --font-text: "Nunito", sans-serif;
 }
 
 body {
@@ -191,6 +191,8 @@ button:disabled:active {
 }
 
 .game-results-versus {
+  display: flex;
+  gap: 1rem;
   font-size: 3rem;
   font-family: var(--font-title);
 }
@@ -203,7 +205,7 @@ button:disabled:active {
   padding: 0.75rem 2rem;
 }
 
-.game-results-versus span {
+#game-versus {
   color: var(--dark-red);
 }
 
