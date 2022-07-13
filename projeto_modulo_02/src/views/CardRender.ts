@@ -7,7 +7,7 @@ const renderCardsStart = (player: Player): HTMLDivElement => {
   playerCardsArea.classList.add("game-player-cards");
   playerCardsArea.id = `player${player.id + 1}-cards`;
 
-  const mainCard = renderCard("game-main-card", `${player.cards[0].id}`);
+  const mainCard = renderCard("game-main-card", `player${player.id}`);
 
   playerCardsArea.appendChild(mainCard);
   playerCardsArea.appendChild(renderCardsLeft(player.cards.length, player));
@@ -24,7 +24,7 @@ const startGameButton = () => {
     players.forEach((player) => {
       if (player.cards.length >= 1) {
         const mainCard = document.getElementById(
-          `game-main-card-${player.cards[0].id}`
+          `game-main-card-player${player.id}`
         ) as HTMLDivElement;
 
         mainCard.innerHTML = `<h2>${player.cards[0].name}</h2>
