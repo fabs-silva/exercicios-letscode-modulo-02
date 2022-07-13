@@ -16,8 +16,8 @@
   --dark-red: #cc0000;
   --yellow: #fccf00;
   --black-alpha: rgba(0, 0, 0, 0.1);
-  --font-title: "Grandstander", sans-serif;
-  --font-text: "Nunito", sans-serif;
+  --font-title: 'Grandstander', sans-serif;
+  --font-text: 'Nunito', sans-serif;
 }
 
 body {
@@ -188,6 +188,7 @@ button:disabled:active {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  width: 40%;
 }
 
 .game-results-versus {

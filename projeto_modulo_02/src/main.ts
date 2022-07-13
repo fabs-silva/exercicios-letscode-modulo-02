@@ -9,12 +9,6 @@ import { renderBoard } from "./views/BoardRender";
 const promiseArray = getPokemonsApi();
 const players = createPlayers(); */
 
-alert(`falta:
-- atualizar cartas restantes
-- botão continua
-- update textos
-- fim do jogo `);
-
 /* Promise.allSettled(promiseArray).then((results) => {
   let pokemonArray: Pokemon[] = [];
   results.forEach((result) => {
@@ -29,11 +23,11 @@ alert(`falta:
   renderBoard(players);
 }); */
 
-import { randomNumbers } from "./Controllers/GeneralControllers";
-import { Pokemon } from "./models/Pokemon";
-import { FakeApi } from "../assets/fakeApi";
-import { createPlayers } from "./Controllers/PlayerController";
-import { renderBoard } from "./views/BoardRender";
+import { FakeApi } from '../assets/fakeApi';
+import { randomNumbers } from './Controllers/GeneralControllers';
+import { createPlayers } from './Controllers/PlayerController';
+import { Pokemon } from './models/Pokemon';
+import { renderBoard } from './views/BoardRender';
 
 const arrayNumbers = randomNumbers();
 const players = createPlayers();
